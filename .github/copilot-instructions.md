@@ -1,92 +1,41 @@
-# Delight International School Website - Copilot Instructions
+# Delight International School — Copilot Instructions (concise)
 
-## Project Overview
-React + Vite + TypeScript website for **Delight International School** — an educational institution offering Early Years through Junior High programs.
+Overview
+- Small React + Vite + TypeScript site. Routes live in `src/App.tsx`; entry point is `src/main.tsx`.
 
-## Tech Stack
-- **React 19** with TypeScript
-- **Vite** for build tooling
-- **React Router DOM** for client-side routing
-- **CSS Modules** for component-scoped styles
+Where to look first
+- Layout components: `src/components/Layout/Header.tsx`, `Footer.tsx` — header variants control page nav and theme.
+- Reusable UI: `src/components/UI/Hero.tsx`, `Card.tsx` demonstrate CSS Module usage and theme variables.
+- Pages: `src/pages/*/` — each page folder contains `PageName.tsx`, `PageName.module.css`, and `index.ts`.
+- Static assets: `public/images/` and `public/files/` (served at `/images/*` and `/files/*`).
 
-## Project Structure
-```
-src/
-├── components/
-│   ├── Layout/          # Header, Footer, shared layout components
-│   └── UI/              # Reusable UI components (Hero, Card)
-├── pages/               # Page components (one folder per route)
-│   ├── Home/
-│   ├── About/
-│   ├── Admissions/
-│   ├── Curriculum/
-│   ├── Gallery/
-│   ├── Contact/
-│   └── Apply/
-├── styles/
-│   └── global.css       # Global styles and CSS reset
-├── App.tsx              # Router configuration
-└── main.tsx             # Entry point
-public/
-├── images/              # Static images
-└── files/               # Downloadable files (admission forms, etc.)
-```
+Conventions agents must follow
+- Styles: use CSS Modules (`Component.module.css`). Keep class names local to component.
+- Exports: components expose an `index.ts` barrel file (follow existing pattern when adding files).
+- Routing: add new routes in `src/App.tsx`; pages expect a default export from page folder `index.ts`.
+- Header variants: use the `variant` prop values `default|wine|blue|cream` to match page themes.
 
-## Page Color Themes
-Each page has a unique color scheme via CSS custom properties:
+Common patterns (examples)
+- Hero backgrounds use a `linear-gradient` overlay — see `src/components/UI/Hero.module.css`.
+- Cards use a left accent border: `border-left: 5px solid var(--accent)` (see `src/components/UI/Card.module.css`).
 
-| Page | Primary Colors | Theme |
-|------|---------------|-------|
-| Home | `--primary: #0055a5` | Blue |
-| About | `--wine: #800020` | Wine/Burgundy |
-| Admissions | `--blue: #003399` | Deep Blue |
-| Curriculum | `--cream: #fff8e7`, `--accent: #e6b800` | Cream/Gold |
-| Gallery | `--cream: #fff8e7`, `--accent: #e6b800` | Cream/Gold |
-| Contact | `--wine: #800020` | Wine |
-| Apply | `--wine: #800020`, `--green: #007f3b` | Wine/Green |
-
-## Key Conventions
-
-### Components
-- Use **CSS Modules** (`ComponentName.module.css`) for styling
-- Export components via `index.ts` barrel files
-- Header component supports variants: `default`, `wine`, `blue`, `cream`
-- Card component supports variants: `wine`, `blue`, `gold`
-
-### Styling Patterns
-- Define page-specific CSS variables at `.page` class level
-- Common variables: `--light`, `--dark`, `--gray`, `--shadow`, `--transition`
-- Hero sections: Use `linear-gradient()` overlay on background images
-- Cards: `border-left: 5px solid var(--[accent])` with hover transform
-- Fixed footer: `position: fixed; bottom: 0;` — pages add `padding-bottom: 100px`
-
-### Routing
-Routes defined in `src/App.tsx`:
-- `/` → Home
-- `/about` → About
-- `/admissions` → Admissions
-- `/curriculum` → Curriculum
-- `/gallery` → Gallery
-- `/contact` → Contact
-- `/apply` → Apply
-
-### Static Assets
-- Images: `/images/filename.jpg` (served from `public/images/`)
-- Files: `/files/filename.xlsx` (served from `public/files/`)
-
-## Commands
+Developer commands
 ```bash
-npm run dev      # Start development server
-npm run build    # Production build
-npm run preview  # Preview production build
-npm run lint     # Run ESLint
+npm run dev      # start dev server (Vite)
+npm run build    # build production
+npm run preview  # preview production build
+npm run lint     # run ESLint
 ```
 
-## When Adding New Pages
-1. Create folder in `src/pages/PageName/` with:
-   - `PageName.tsx` - Component
-   - `PageName.module.css` - Styles
-   - `index.ts` - Export
-2. Add route in `src/App.tsx`
-3. Update navigation in Header component if needed
-4. Define unique color variables at `.page` class level
+Notes about tests & CI
+- No test suite detected in repo root. Before adding tests, follow existing project structure and keep tests colocated with components.
+
+Agent model preference
+- Prefer GPT-5 mini when generating code or PR text. (I cannot toggle service-level model settings from the repo; request admin changes in your Copilot/AI platform.)
+
+If unsure, open these files
+- `src/App.tsx` — routing and page mounts
+- `src/components/Layout/Header.tsx` — nav + theme handling
+- `src/components/UI/Hero.tsx`, `Card.tsx` — UI patterns
+
+If you want this updated or expanded (examples, PR checklist), tell me which section to expand.
