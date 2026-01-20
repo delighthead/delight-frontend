@@ -1,0 +1,15 @@
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: var(--shadow);
+}
+
+.dark,
+.wine {
+  background-color: #003399;
+  color: #fff;
+}
