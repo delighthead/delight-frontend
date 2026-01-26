@@ -2,7 +2,7 @@
 
 This repository includes a GitHub Actions workflow that builds the Vite app and deploys the `dist/` output to your VPS via SCP.
 
-Required repository secrets (set in GitHub > Settings > Secrets):
+Required repository secrets (set in GitHub > Settings > Secrets and variables > Actions):
 - `SSH_HOST` — example: 65.181.125.46
 - `SSH_USER` — example: deploy
 - `SSH_PORT` — optional (default `22`)
@@ -10,7 +10,8 @@ Required repository secrets (set in GitHub > Settings > Secrets):
 - `DEPLOY_PATH` — remote target directory (example: `/var/www/delight-frontend`)
 
 How it works:
-- Push to `main` triggers the workflow.
+- Push to `main` triggers the workflow automatically.
+- The workflow can also be triggered manually from the GitHub Actions tab (select the workflow and click "Run workflow").
 - The action builds the app (`npm ci` + `npm run build`) and copies `dist/*` to `DEPLOY_PATH`.
 - A post-deploy SSH step runs simple verification commands. You can expand the `script` section in `.github/workflows/ci-cd.yml`.
 
