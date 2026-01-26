@@ -33,7 +33,7 @@ jobs:
           path: dist
 
       - name: Deploy files to VPS (SCP)
-        uses: appleboy/scp-action@v0.1.8
+        uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
@@ -43,7 +43,7 @@ jobs:
           target: ${{ secrets.DEPLOY_PATH }}
 
       - name: Post-deploy commands (optional)
-        uses: appleboy/ssh-action@v0.1.8
+        uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
