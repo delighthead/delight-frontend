@@ -9,15 +9,15 @@ export default function Events() {
       id: 1,
       title: 'Career Day',
       date: 'February 13, 2026',
-      description: 'Join us for a day of excitement as our students dressing like their future career.',
+      description: 'Join us for a day of excitement as our students dress up as their future career.',
       location: 'School Grounds',
     },
     {
       id: 2,
       title: 'Excursion to Boti and Akaa Waterfalls',
       date: 'March 7, 2026',
-      description: 'Students will learn about waterfalls and river systems. Understand tourism and environmental conservation. Observe physical features studied in Geography. Learn teamwork, discipline, and time managementg creativity and scientific thinking.',
-      location: 'School Auditorium',
+      description: 'Students will learn about waterfalls and river systems. Understand tourism and environmental conservation. Observe physical features studied in Geography. Learn teamwork, discipline, and time management.',
+      location: 'Boti and Akaa Waterfalls',
     },
     {
       id: 3,
