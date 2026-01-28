@@ -916,17 +916,19 @@
 .footer {
   background: var(--dark);
   color: var(--light);
-  padding: 4rem 5% 2rem;
+  padding: 1rem 5%;
 }
 
 .footerContent {
   max-width: 1400px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  gap: 3rem;
-  padding-bottom: 3rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.footerContent p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .footerBrand p {
