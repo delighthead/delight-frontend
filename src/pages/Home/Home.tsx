@@ -271,12 +271,7 @@ export default function Home() {
             <Link to="/curriculum">Curriculum</Link>
             <Link to="/gallery">Gallery</Link>
           </div>
-          <div className={styles.footerLinks}>
-            <h4>Programs</h4>
-            <a href="#">Early Years</a>
-            <a href="#">Primary School</a>
-            <a href="#">Junior High</a>
-          </div>
+
           <div className={styles.footerContact}>
             <h4>Contact Us</h4>
             <p>� +233 244 113 286 and +233 277 776 449</p>
