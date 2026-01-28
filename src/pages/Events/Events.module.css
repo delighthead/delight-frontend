@@ -1,0 +1,102 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem 0;
+  background-color: #f9f9f9;
+}
+
+.eventsContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.eventsList {
+  display: grid;
+  gap: 2rem;
+}
+
+.eventCard {
+  background: white;
+  border-left: 5px solid var(--accent);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.eventCard:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.eventHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.eventTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  flex: 1;
+}
+
+.eventDate {
+  background-color: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.eventLocation {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0.5rem 0 1rem 0;
+  font-weight: 500;
+}
+
+.eventDescription {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 1.5rem 0;
+  }
+
+  .eventsContainer {
+    padding: 0 1rem;
+  }
+
+  .eventHeader {
+    flex-direction: column;
+  }
+
+  .eventTitle {
+    font-size: 1.25rem;
+  }
+
+  .eventDate {
+    align-self: flex-start;
+  }
+
+  .eventCard {
+    padding: 1.5rem;
+  }
+}
