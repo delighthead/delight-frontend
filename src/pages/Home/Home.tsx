@@ -279,9 +279,9 @@ export default function Home() {
           </div>
           <div className={styles.footerContact}>
             <h4>Contact Us</h4>
-            <p>📍 New Achimota, Accra</p>
-            <p>📞 +233 24 123 4567</p>
-            <p>✉️ info@delightschool.edu.gh</p>
+            <p>� +233 244 113 286 and +233 277 776 449</p>
+            <p>📍 Delight International School Box AN 5044 Accra North</p>
+            <p>✉️ delightintschool@gmail.com</p>
           </div>
         </div>
         <div className={styles.footerBottom}>
