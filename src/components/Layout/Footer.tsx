@@ -8,6 +8,7 @@ export default function Footer({ variant = 'dark' }: FooterProps) {
   return (
     <footer className={`${styles.footer} ${styles[variant]}`}>
       <p>&copy; 2025 Delight International School | All Rights Reserved</p>
+      <p>Designed and Developed by CRS Tech Solutions</p>
     </footer>
   );
 }
