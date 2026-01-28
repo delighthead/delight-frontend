@@ -257,30 +257,12 @@ export default function Home() {
       {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
-          <div className={styles.footerBrand}>
-            <div className={styles.footerLogo}>🎓 Delight International School</div>
-            <p>Empowering young minds through excellence in education since 2010.</p>
-            <div className={styles.socialLinks}>
-              <a href="#">📘</a><a href="#">🐦</a><a href="#">📷</a><a href="#">▶️</a>
-            </div>
-          </div>
-          <div className={styles.footerLinks}>
-            <h4>Quick Links</h4>
-            <Link to="/about">About Us</Link>
-            <Link to="/admissions">Admissions</Link>
-            <Link to="/curriculum">Curriculum</Link>
-            <Link to="/gallery">Gallery</Link>
-          </div>
-
           <div className={styles.footerContact}>
             <h4>Contact Us</h4>
-            <p>� +233 244 113 286 and +233 277 776 449</p>
+            <p>📞 +233 244 113 286 and +233 277 776 449</p>
             <p>📍 Delight International School Box AN 5044 Accra North</p>
             <p>✉️ delightintschool@gmail.com</p>
           </div>
-        </div>
-        <div className={styles.footerBottom}>
-          <p>&copy; 2025 Delight International School. All Rights Reserved.</p>
         </div>
       </footer>
     </div>
