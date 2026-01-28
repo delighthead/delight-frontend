@@ -257,7 +257,8 @@ export default function Home() {
       {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
-          <p>📞 Phone: +233 244 113 286 and +233 277 776 449  |  📍 Address: Delight International School Box AN 5044 Accra North  |  ✉️ Email: delightintschool@gmail.com  |  Designed and Developed by CRS Tech Solutions</p>
+          <p>📞 Phone: +233 244 113 286 and +233 277 776 449  |  📍 Address: Delight International School Box AN 5044 Accra North  |  ✉️ Email: delightintschool@gmail.com</p>
+          <p>&copy; 2025 Delight International School All Rights Reserved | Designed and Developed by CRS Tech Solutions</p>
         </div>
       </footer>
     </div>
