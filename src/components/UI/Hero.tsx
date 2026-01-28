@@ -7,6 +7,7 @@ interface HeroProps {
   variant?: 'blue' | 'wine' | 'cream';
   ctaText?: string;
   ctaLink?: string;
+  titleColor?: string;
 }
 
 export default function Hero({
@@ -16,6 +17,7 @@ export default function Hero({
   variant = 'blue',
   ctaText,
   ctaLink,
+  titleColor,
 }: HeroProps) {
   const style = backgroundImage
     ? { backgroundImage: `linear-gradient(var(--overlay), var(--overlay)), url(${backgroundImage})` }
@@ -23,7 +25,7 @@ export default function Hero({
 
   return (
     <section className={`${styles.hero} ${styles[variant]}`} style={style}>
-      <h2>{title}</h2>
+      <h2 style={titleColor ? { color: titleColor } : {}}>{title}</h2>
       <p>{subtitle}</p>
       {ctaText && ctaLink && (
         <a href={ctaLink} className={styles.ctaButton}>

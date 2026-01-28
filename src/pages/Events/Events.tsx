@@ -7,16 +7,16 @@ export default function Events() {
   const events = [
     {
       id: 1,
-      title: 'Annual Sports Day',
-      date: 'February 15, 2026',
-      description: 'Join us for a day of excitement as our students compete in various sporting activities.',
+      title: 'Career Day',
+      date: 'February 13, 2026',
+      description: 'Join us for a day of excitement as our students dressing like their future career.',
       location: 'School Grounds',
     },
     {
       id: 2,
-      title: 'Science Fair Exhibition',
-      date: 'March 5, 2026',
-      description: 'Showcase of innovative projects by our young scientists demonstrating creativity and scientific thinking.',
+      title: 'Excursion to Boti and Akaa Waterfalls',
+      date: 'March 7, 2026',
+      description: 'Students will learn about waterfalls and river systems. Understand tourism and environmental conservation. Observe physical features studied in Geography. Learn teamwork, discipline, and time managementg creativity and scientific thinking.',
       location: 'School Auditorium',
     },
     {
@@ -49,6 +49,7 @@ export default function Events() {
         title="Upcoming Events"
         subtitle="Stay informed about school activities and events"
         backgroundImage="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+        titleColor="#000"
       />
       <main className={styles.main}>
         <section className={styles.eventsContainer}>
