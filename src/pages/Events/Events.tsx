@@ -11,6 +11,7 @@ export default function Events() {
       date: 'February 13, 2026',
       description: 'Join us for a day of excitement as our students dress up as their future career.',
       location: 'School Grounds',
+      image: 'https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=300&fit=crop',
     },
     {
       id: 2,
@@ -18,6 +19,7 @@ export default function Events() {
       date: 'March 7, 2026',
       description: 'Students will learn about waterfalls and river systems. Understand tourism and environmental conservation. Observe physical features studied in Geography. Learn teamwork, discipline, and time management.',
       location: 'Boti and Akaa Waterfalls',
+      image: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=300&fit=crop',
     },
     {
       id: 3,
@@ -25,6 +27,7 @@ export default function Events() {
       date: 'April 10, 2026',
       description: 'Celebrate diversity through music, dance, food, and cultural performances from around the world.',
       location: 'School Grounds',
+      image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&h=300&fit=crop',
     },
     {
       id: 4,
@@ -32,6 +35,7 @@ export default function Events() {
       date: 'April 20, 2026',
       description: 'Meet with teachers to discuss student progress and academic development.',
       location: 'School Campus',
+      image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=300&fit=crop',
     },
     {
       id: 5,
@@ -39,6 +43,7 @@ export default function Events() {
       date: 'May 30, 2026',
       description: 'Celebrating the achievements of our graduating class as they move forward to new horizons.',
       location: 'School Auditorium',
+      image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop',
     },
   ];
 
@@ -56,12 +61,15 @@ export default function Events() {
           <div className={styles.eventsList}>
             {events.map((event) => (
               <article key={event.id} className={styles.eventCard}>
-                <div className={styles.eventHeader}>
-                  <h3 className={styles.eventTitle}>{event.title}</h3>
-                  <span className={styles.eventDate}>{event.date}</span>
+                <img src={event.image} alt={event.title} className={styles.eventImage} />
+                <div className={styles.eventContent}>
+                  <div className={styles.eventHeader}>
+                    <h3 className={styles.eventTitle}>{event.title}</h3>
+                    <span className={styles.eventDate}>{event.date}</span>
+                  </div>
+                  <p className={styles.eventLocation}>📍 {event.location}</p>
+                  <p className={styles.eventDescription}>{event.description}</p>
                 </div>
-                <p className={styles.eventLocation}>📍 {event.location}</p>
-                <p className={styles.eventDescription}>{event.description}</p>
               </article>
             ))}
           </div>
