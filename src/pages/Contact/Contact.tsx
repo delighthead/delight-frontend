@@ -44,15 +44,15 @@ export default function Contact() {
         <div className={styles.contactDetails}>
           <div>
             <h4>Address</h4>
-            <p>Delight International School<br />New Achimota, Ga North, Accra</p>
+            <p>Delight International School<br />Box AN 5044 Accra North</p>
           </div>
           <div>
             <h4>Phone</h4>
-            <p>+233 24 123 4567<br />+233 20 765 4321</p>
+            <p>+233 244 113 286<br />+233 277 776 449</p>
           </div>
           <div>
             <h4>Email</h4>
-            <p>info@delightinternationalschool.edu.gh</p>
+            <p>delightintschool@gmail.com</p>
           </div>
           <div>
             <h4>Office Hours</h4>
