@@ -15,11 +15,20 @@ export default function Apply() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    window.open(
-      'https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=publish-editor',
-      '_blank',
-      'noopener,noreferrer'
-    );
+    const subject = 'New Student Application';
+    const body = [
+      `Full Name: ${formData.fullName}`,
+      `Date of Birth: ${formData.dob}`,
+      `Gender: ${formData.gender}`,
+      `Applying for Grade: ${formData.grade}`,
+      `Parent/Guardian Name: ${formData.parent}`,
+      `Parent Contact: ${formData.contact}`,
+      `Residential Address: ${formData.address}`,
+    ].join('\n');
+
+    window.location.href = `mailto:delightintschool@gmail.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
 
     setFormData({
       fullName: '',
