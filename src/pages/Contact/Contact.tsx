@@ -47,12 +47,20 @@ export default function Contact() {
             <p>Delight International School<br />Box AN 5044 Accra North</p>
           </div>
           <div>
+            <h4>Physical Location</h4>
+            <p>Branch 1 @ Accra ~ Kotobabi, Ghana<br />Branch 2 @ Accra – Ofankor, Ghana</p>
+          </div>
+          <div>
             <h4>Phone</h4>
             <p>+233 244 113 286<br />+233 277 776 449</p>
           </div>
           <div>
             <h4>Email</h4>
             <p>delightintschool@gmail.com</p>
+          </div>
+          <div>
+            <h4>Social Media Links</h4>
+            <p>WhatsApp (+233244113286 , +233277776449)</p>
           </div>
           <div>
             <h4>Office Hours</h4>
