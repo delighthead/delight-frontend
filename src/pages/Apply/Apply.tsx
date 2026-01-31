@@ -15,9 +15,21 @@ export default function Apply() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Application submitted:', formData);
-    alert('Thank you for your application! We will contact you soon.');
+    const subject = 'New Student Application';
+    const body = [
+      `Full Name: ${formData.fullName}`,
+      `Date of Birth: ${formData.dob}`,
+      `Gender: ${formData.gender}`,
+      `Applying for Grade: ${formData.grade}`,
+      `Parent/Guardian Name: ${formData.parent}`,
+      `Parent Contact: ${formData.contact}`,
+      `Residential Address: ${formData.address}`,
+    ].join('\n');
+
+    window.location.href = `mailto:delightintschool@gmail.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
     setFormData({
       fullName: '',
       dob: '',
