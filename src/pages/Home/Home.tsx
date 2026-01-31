@@ -169,7 +169,7 @@ export default function Home() {
           <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=500&h=600&fit=crop" alt="African teacher with students" className={styles.aboutImg1} />
           <img src="/files/Blessing" alt="Student" className={styles.aboutImg2} />
           <div className={styles.expBadge}>
-            <span className={styles.expNumber}>15+</span>
+            <span className={styles.expNumber}>20+</span>
             <span>Years</span>
           </div>
         </div>
