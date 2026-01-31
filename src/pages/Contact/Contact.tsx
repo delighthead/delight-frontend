@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from 'react';
-import emailjs from '@emailjs/browser';
 import { Footer } from '../../components/Layout';
 import styles from './Contact.module.css';
 
@@ -9,34 +8,23 @@ export default function Contact() {
     email: '',
     message: '',
   });
-  const [sending, setSending] = useState(false);
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setSending(true);
+    const subject = 'New Message from Contact Form';
+    const body = [
+      `From: ${formData.fullName}`,
+      `Email: ${formData.email}`,
+      ``,
+      `Message:`,
+      formData.message,
+    ].join('\n');
 
-    try {
-      // Send email using EmailJS
-      await emailjs.send(
-        'service_delight', // You'll need to replace this with your EmailJS service ID
-        'template_contact', // You'll need to replace this with your EmailJS template ID
-        {
-          from_name: formData.fullName,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: 'delightintschool@gmail.com',
-        },
-        'YOUR_PUBLIC_KEY' // You'll need to replace this with your EmailJS public key
-      );
+    window.location.href = `mailto:delightintschool@gmail.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
 
-      alert('Thank you! Your message has been sent successfully.');
-      setFormData({ fullName: '', email: '', message: '' });
-    } catch (error) {
-      console.error('Failed to send email:', error);
-      alert('Sorry, there was an error sending your message. Please try again or contact us directly at delightintschool@gmail.com');
-    } finally {
-      setSending(false);
-    }
+    setFormData({ fullName: '', email: '', message: '' });
   };
 
   return (
@@ -111,9 +99,7 @@ export default function Contact() {
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           />
-          <button type="submit" disabled={sending}>
-            {sending ? 'Sending...' : 'Send Message'}
-          </button>
+          <button type="submit">Send Message</button>
         </form>
       </section>
 
