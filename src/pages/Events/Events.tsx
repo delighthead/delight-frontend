@@ -11,7 +11,7 @@ export default function Events() {
       date: 'February 13, 2026',
       description: 'Join us for a day of excitement as our students dress up as their future career.',
       location: 'School Grounds',
-      image: 'https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=300&fit=crop',
+      image: '/images/1jpg%20(Copy)',
     },
     {
       id: 2,
