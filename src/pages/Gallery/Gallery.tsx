@@ -2,28 +2,39 @@ import { Header, Footer } from '../../components/Layout';
 import styles from './Gallery.module.css';
 
 export default function Gallery() {
-  const images = [
-    { src: '/images/BGM LOGO.jpg', alt: 'Gallery Image 1' },
-    { src: '/images/gallery2.jpg', alt: 'Gallery Image 2' },
-    { src: '/images/CRS LOGO.jpg', alt: 'Gallery Image 3' },
-    { src: '/images/gallery4.jpg', alt: 'Gallery Image 4' },
-    { src: '/images/logo OFANKOR.jpg', alt: 'Gallery Image 5' },
-    { src: '/images/gallery3.jpg', alt: 'Gallery Image 6' },
-    { src: '/images/logo 1.jpg', alt: 'Gallery Image 7' },
-    { src: '/images/DELIGHT LOGO.jpg', alt: 'Gallery Image 8' },
-    { src: '/images/CRS LOGO.jpg', alt: 'Gallery Image 9' },
-    { src: '/images/gallery4.jpg', alt: 'Gallery Image 10' },
-    { src: '/images/logo OFANKOR.jpg', alt: 'Gallery Image 11' },
-    { src: '/images/gallery3.jpg', alt: 'Gallery Image 12' },
-    { src: '/images/CRS LOGO.jpg', alt: 'Gallery Image 13' },
-    { src: '/images/gallery4.jpg', alt: 'Gallery Image 14' },
-    { src: '/images/logo OFANKOR.jpg', alt: 'Gallery Image 15' },
-    { src: '/images/gallery3.jpg', alt: 'Gallery Image 16' },
-    { src: '/images/logo 1.jpg', alt: 'Gallery Image 17' },
-    { src: '/images/DELIGHT LOGO.jpg', alt: 'Gallery Image 18' },
-    { src: '/images/gallery3.jpg', alt: 'Gallery Image 19' },
-    { src: '/images/gallery4.jpg', alt: 'Gallery Image 20' },
+  const imageFiles = [
+    '1jpg',
+    '1jpg (Copy)',
+    'IMG20251023130839.jpg',
+    'IMG20251023130941.jpg',
+    'IMG20251030163000.jpg',
+    'IMG20251030163245.jpg',
+    'IMG20251030163331.jpg',
+    'IMG20251030163623.jpg',
+    'IMG20251030163644.jpg',
+    'IMG20251030163657.jpg',
+    'IMG20251030163708.jpg',
+    'IMG20251030163731.jpg',
+    'IMG20251030163820.jpg',
+    'IMG20251030163832.jpg',
+    'IMG20251030171429.jpg',
+    'IMG20251212144010.jpg',
+    'IMG20251212144126.jpg',
+    'IMG20251212144545.jpg',
+    'IMG20251212145708.jpg',
+    'IMG-20260129-WA0002.jpg',
+    'IMG-20260129-WA0003.jpg',
+    'IMG-20260129-WA0005.jpg',
+    'IMG-20260129-WA0006.jpg',
+    'IMG-20260129-WA0007.jpg',
+    'IMG-20260129-WA0008.jpg',
+    'IMG-20260129-WA0009.jpg',
   ];
+
+  const images = imageFiles.map((file, index) => ({
+    src: `/images/${encodeURIComponent(file)}`,
+    alt: `Gallery Image ${index + 1}`,
+  }));
 
   return (
     <div className={styles.page}>
