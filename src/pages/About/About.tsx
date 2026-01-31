@@ -11,6 +11,17 @@ export default function About() {
     { title: 'Teamwork', description: 'We believe in collaboration and community, nurturing unity among students, staff, and families.' },
   ];
 
+  const subjects = [
+    { title: 'Mathematics', description: 'Building strong numerical reasoning, logical thinking, and problem-solving skills across all grade levels.' },
+    { title: 'English Language', description: 'Enhancing communication through reading, writing, grammar, and comprehension activities.' },
+    { title: 'Science', description: 'Encouraging curiosity through practical experiments, environmental awareness, and scientific exploration.' },
+    { title: 'ICT (Information & Communication Technology)', description: 'Preparing students for the digital world with coding, computing, and safe technology practices.' },
+    { title: 'Social Studies', description: 'Fostering global awareness, civic responsibility, and appreciation for culture and history.' },
+    { title: 'Creative Arts', description: 'Developing imagination and self-expression through art, music, and drama.' },
+    { title: 'Religious & Moral Education', description: 'Instilling values such as honesty, kindness, and respect for diversity.' },
+    { title: 'Physical Education', description: 'Promoting fitness, teamwork, and discipline through structured sports and activities.' },
+  ];
+
   return (
     <div className={styles.page}>
       <Header variant="wine" />
@@ -34,6 +45,14 @@ export default function About() {
         <div className={styles.values}>
           {values.map((value) => (
             <Card key={value.title} title={value.title} description={value.description} variant="wine" />
+          ))}
+        </div>
+
+        <h3>Core Learning Areas</h3>
+        <p>Our curriculum combines academic rigor with creativity, moral education, and real-world problem-solving skills.</p>
+        <div className={styles.values}>
+          {subjects.map((subject) => (
+            <Card key={subject.title} title={subject.title} description={subject.description} variant="wine" />
           ))}
         </div>
       </section>
