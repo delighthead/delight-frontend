@@ -67,7 +67,6 @@ export default function Home() {
             <Link to="/" className={styles.active}>Home</Link>
             <Link to="/about">About</Link>
             <Link to="/admissions">Admissions</Link>
-            <Link to="/curriculum">Curriculum</Link>
             <Link to="/gallery">Gallery</Link>
             <Link to="/contact">Contact</Link>
             <Link to="/apply" className={styles.applyBtn}>Apply Now</Link>
@@ -245,12 +244,9 @@ export default function Home() {
       {/* CTA Section */}
       <section className={styles.ctaSection}>
         <div className={styles.ctaContent}>
-          <h2>Ready to Give Your Child the Best Education?</h2>
-          <p>Join our community of learners and watch your child flourish. Applications are now open!</p>
-          <div className={styles.ctaButtons}>
-            <Link to="/apply" className={styles.ctaPrimaryBtn}>Apply Now</Link>
-            <Link to="/contact" className={styles.ctaSecondaryBtn}>Contact Us</Link>
-          </div>
+          <h2>Be Part of Our Academic Journey</h2>
+          <p>Enroll your child today and experience quality education that inspires confidence and excellence.</p>
+          <Link to="/apply" className={styles.ctaPrimaryBtn}>Apply Now</Link>
         </div>
       </section>
 

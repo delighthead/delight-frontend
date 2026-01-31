@@ -33,11 +33,6 @@ export default function Header({ variant = 'default' }: HeaderProps) {
             </Link>
           </li>
           <li>
-            <Link to="/curriculum" className={isActive('/curriculum') ? styles.active : ''}>
-              Curriculum
-            </Link>
-          </li>
-          <li>
             <Link to="/gallery" className={isActive('/gallery') ? styles.active : ''}>
               Gallery
             </Link>
