@@ -50,7 +50,7 @@ export default function About() {
 
         <h3>Core Learning Areas</h3>
         <p>Our curriculum combines academic rigor with creativity, moral education, and real-world problem-solving skills.</p>
-        <div className={styles.subjects}>
+        <div className={styles.values}>
           {subjects.map((subject) => (
             <Card key={subject.title} title={subject.title} description={subject.description} variant="wine" />
           ))}
