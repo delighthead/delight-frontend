@@ -34,7 +34,7 @@ export default function Home() {
   const stats = [
     { number: '500+', label: 'Students' },
     { number: '35+', label: 'Teachers' },
-    { number: '15+', label: 'Years' },
+    { number: '20+', label: 'Years' },
     { number: '98%', label: 'Success Rate' },
   ];
 
