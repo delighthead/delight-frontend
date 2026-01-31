@@ -19,7 +19,7 @@ export default function Events() {
       date: 'March 7, 2026',
       description: 'Students will learn about waterfalls and river systems. Understand tourism and environmental conservation. Observe physical features studied in Geography. Learn teamwork, discipline, and time management.',
       location: 'Boti and Akaa Waterfalls',
-      image: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=300&fit=crop',
+      image: '/images/Picture1.png',
     },
     {
       id: 3,
