@@ -39,7 +39,7 @@ export default function Header({ variant = 'default' }: HeaderProps) {
           </li>
           <li>
             <Link to="/events" className={isActive('/events') ? styles.active : ''}>
-              Upcoming Events
+              Events
             </Link>
           </li>
           <li>
