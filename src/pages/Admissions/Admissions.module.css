@@ -126,7 +126,7 @@
   display: inline-block;
   background-color: var(--light);
   color: var(--primary);
-  padding: 0.75rem 1.5rem;
+  padding: 0.55rem 1.2rem;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
@@ -144,7 +144,7 @@
   display: inline-block;
   background-color: transparent;
   color: var(--light);
-  padding: 0.75rem 1.5rem;
+  padding: 0.55rem 1.2rem;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
