@@ -74,8 +74,9 @@ export default function Admissions() {
             </a>
             <a
               className={styles.downloadBtn}
-              href="/files/ADMISSION%20FORM%20NEW.pdf"
-              download
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=sharing&ouid=114204056174231630483"
+              target="_blank"
+              rel="noreferrer"
             >
               Download Forms
             </a>

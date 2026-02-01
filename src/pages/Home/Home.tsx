@@ -86,9 +86,10 @@ export default function Home() {
               Apply Now
             </a>
             <a
-              href="/files/ADMISSION%20FORM%20NEW.pdf"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=sharing&ouid=114204056174231630483"
               className={styles.applyBtn}
-              download
+              target="_blank"
+              rel="noreferrer"
             >
               Download Form
             </a>
@@ -123,9 +124,10 @@ export default function Home() {
               Start Your Journey <span>→</span>
             </a>
             <a
-              href="/files/ADMISSION%20FORM%20NEW.pdf"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=sharing&ouid=114204056174231630483"
               className={styles.secondaryBtn}
-              download
+              target="_blank"
+              rel="noreferrer"
             >
               Download Form
             </a>
@@ -290,9 +292,10 @@ export default function Home() {
               Apply Now
             </a>
             <a
-              href="/files/ADMISSION%20FORM%20NEW.pdf"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=sharing&ouid=114204056174231630483"
               className={styles.ctaSecondaryBtn}
-              download
+              target="_blank"
+              rel="noreferrer"
             >
               Download Form
             </a>
