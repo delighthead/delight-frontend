@@ -103,9 +103,14 @@ export default function Home() {
           <h1>Where Young Minds <span className={styles.highlight}>Blossom</span></h1>
           <p>Empowering students with knowledge, creativity, and integrity to succeed in a rapidly changing world.</p>
           <div className={styles.heroButtons}>
-            <Link to="/apply" className={styles.primaryBtn}>
+            <a
+              className={styles.primaryBtn}
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=sharing&ouid=114204056174231630483"
+              target="_blank"
+              rel="noreferrer"
+            >
               Start Your Journey <span>→</span>
-            </Link>
+            </a>
             <button type="button" className={styles.secondaryBtn}>
               Download Form
             </button>
