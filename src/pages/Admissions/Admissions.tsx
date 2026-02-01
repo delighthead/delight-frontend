@@ -64,7 +64,14 @@ export default function Admissions() {
           <h3>Ready to Join Us?</h3>
           <p>Begin your child's journey with Delight International School today.</p>
           <div className={styles.applyActions}>
-            <Link to="/apply" className={styles.applyBtn}>Apply Now</Link>
+            <a
+              className={styles.applyBtn}
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=sharing&ouid=114204056174231630483"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Apply Now
+            </a>
             <button type="button" className={styles.downloadBtn}>Download Form</button>
           </div>
         </div>
