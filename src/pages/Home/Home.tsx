@@ -48,7 +48,11 @@ export default function Home() {
     <div className={styles.page}>
       {/* Animated Background Elements */}
       <div className={styles.floatingElements}>
-        <span className={styles.float1}>📖</span>
+        <img
+          className={`${styles.float1} ${styles.floatLogo}`}
+          src="/images/logo.jpg"
+          alt="Delight International School logo"
+        />
         <span className={styles.float2}>✏️</span>
         <span className={styles.float3}>🎓</span>
         <img
