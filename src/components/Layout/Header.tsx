@@ -14,12 +14,7 @@ export default function Header({ variant = 'default' }: HeaderProps) {
     <header className={`${styles.header} ${styles[variant]}`}>
       <nav className={styles.nav}>
         <Link to="/" className={styles.logo}>
-          <img
-            className={styles.logoImage}
-            src="/images/logo.jpg"
-            alt="Delight International School logo"
-          />
-          <span>Delight International School</span>
+          Delight International School
         </Link>
         <ul className={styles.navList}>
           <li>
