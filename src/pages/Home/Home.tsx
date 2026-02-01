@@ -99,6 +99,9 @@ export default function Home() {
             <Link to="/apply" className={styles.primaryBtn}>
               Start Your Journey <span>→</span>
             </Link>
+            <button type="button" className={styles.secondaryBtn}>
+              Download Form
+            </button>
             <Link to="/gallery" className={styles.secondaryBtn}>
               <span className={styles.playIcon}>▶</span> Virtual Tour
             </Link>
@@ -250,7 +253,10 @@ export default function Home() {
         <div className={styles.ctaContent}>
           <h2>Be Part of Our Academic Journey</h2>
           <p>Enroll your child today and experience quality education that inspires confidence and excellence.</p>
-          <Link to="/apply" className={styles.ctaPrimaryBtn}>Apply Now</Link>
+          <div className={styles.ctaButtons}>
+            <Link to="/apply" className={styles.ctaPrimaryBtn}>Apply Now</Link>
+            <button type="button" className={styles.ctaSecondaryBtn}>Download Form</button>
+          </div>
         </div>
       </section>
 
