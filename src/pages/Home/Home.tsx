@@ -110,13 +110,6 @@ export default function Home() {
             <Link to="/apply" className={styles.primaryBtn}>
               Start Your Journey <span>→</span>
             </Link>
-            <a
-              href="/files/ADMISSION%20FORM%20NEW.pdf"
-              className={styles.secondaryBtn}
-              download
-            >
-              Download Form
-            </a>
             <Link to="/gallery" className={styles.secondaryBtn}>
               <span className={styles.playIcon}>▶</span> Virtual Tour
             </Link>
