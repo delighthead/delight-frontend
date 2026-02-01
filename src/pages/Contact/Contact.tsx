@@ -38,7 +38,16 @@ export default function Contact() {
             <li><a href="/admissions">Admissions</a></li>
             <li><a href="/gallery">Gallery</a></li>
             <li><a href="/contact" className={styles.active}>Contact</a></li>
-            <li><a href="/apply" className={styles.applyBtn}>Apply Now</a></li>
+            <li>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=sharing&ouid=114204056174231630483"
+                className={styles.applyBtn}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Apply Now
+              </a>
+            </li>
           </ul>
         </nav>
       </header>
