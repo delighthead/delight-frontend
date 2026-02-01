@@ -60,11 +60,7 @@ export default function Home() {
       <header className={styles.header}>
         <div className={styles.headerContent}>
           <Link to="/" className={styles.logo}>
-            <img
-              className={styles.logoIcon}
-              src="/images/logo.jpg"
-              alt="Delight International School logo"
-            />
+            <span className={styles.logoIcon}>🎓</span>
             <span>Delight International School</span>
           </Link>
           <nav className={styles.nav}>
