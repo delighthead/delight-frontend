@@ -79,7 +79,9 @@
 }
 
 .logoIcon {
-  font-size: 1.8rem;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
   animation: bounce 2s infinite;
 }
 
