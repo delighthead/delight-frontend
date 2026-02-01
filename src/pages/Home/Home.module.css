@@ -26,11 +26,18 @@
   overflow: hidden;
 }
 
-.floatingElements span {
+.floatingElements span,
+.floatingElements img {
   position: absolute;
   font-size: 2rem;
   opacity: 0.1;
   animation: float 20s infinite ease-in-out;
+}
+
+.floatLogo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 .float1 { top: 10%; left: 5%; animation-delay: 0s; }
