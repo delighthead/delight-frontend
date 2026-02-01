@@ -77,14 +77,7 @@ export default function Home() {
             <Link to="/admissions">Admissions</Link>
             <Link to="/gallery">Gallery</Link>
             <Link to="/contact">Contact</Link>
-            <a
-              className={styles.applyBtn}
-              href="https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=sharing&ouid=114204056174231630483"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Apply Now
-            </a>
+            <Link to="/apply" className={styles.applyBtn}>Apply Now</Link>
             <a
               href="/files/ADMISSION%20FORM%20NEW.pdf"
               className={styles.applyBtn}
@@ -114,14 +107,9 @@ export default function Home() {
           <h1>Where Young Minds <span className={styles.highlight}>Blossom</span></h1>
           <p>Empowering students with knowledge, creativity, and integrity to succeed in a rapidly changing world.</p>
           <div className={styles.heroButtons}>
-            <a
-              className={styles.primaryBtn}
-              href="https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=sharing&ouid=114204056174231630483"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="/apply" className={styles.primaryBtn}>
               Start Your Journey <span>→</span>
-            </a>
+            </Link>
             <a
               href="/files/ADMISSION%20FORM%20NEW.pdf"
               className={styles.secondaryBtn}
@@ -281,14 +269,7 @@ export default function Home() {
           <h2>Be Part of Our Academic Journey</h2>
           <p>Enroll your child today and experience quality education that inspires confidence and excellence.</p>
           <div className={styles.ctaButtons}>
-            <a
-              className={styles.ctaPrimaryBtn}
-              href="https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=sharing&ouid=114204056174231630483"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Apply Now
-            </a>
+            <Link to="/apply" className={styles.ctaPrimaryBtn}>Apply Now</Link>
             <a
               href="/files/ADMISSION%20FORM%20NEW.pdf"
               className={styles.ctaSecondaryBtn}
