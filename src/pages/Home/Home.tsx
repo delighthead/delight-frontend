@@ -78,6 +78,13 @@ export default function Home() {
             <Link to="/gallery">Gallery</Link>
             <Link to="/contact">Contact</Link>
             <Link to="/apply" className={styles.applyBtn}>Apply Now</Link>
+            <a
+              href="/files/ADMISSION%20FORM%20NEW.pdf"
+              className={styles.applyBtn}
+              download
+            >
+              Download Form
+            </a>
           </nav>
         </div>
       </header>
@@ -254,7 +261,16 @@ export default function Home() {
         <div className={styles.ctaContent}>
           <h2>Be Part of Our Academic Journey</h2>
           <p>Enroll your child today and experience quality education that inspires confidence and excellence.</p>
-          <Link to="/apply" className={styles.ctaPrimaryBtn}>Apply Now</Link>
+          <div className={styles.ctaButtons}>
+            <Link to="/apply" className={styles.ctaPrimaryBtn}>Apply Now</Link>
+            <a
+              href="/files/ADMISSION%20FORM%20NEW.pdf"
+              className={styles.ctaSecondaryBtn}
+              download
+            >
+              Download Form
+            </a>
+          </div>
         </div>
       </section>
 
