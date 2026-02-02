@@ -274,7 +274,6 @@ export default function Home() {
             >
               Apply Now
             </a>
-            <button type="button" className={styles.ctaSecondaryBtn}>Download Form</button>
           </div>
         </div>
       </section>
