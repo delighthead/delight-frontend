@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Header, Footer } from '../../components/Layout';
 import { Card } from '../../components/UI';
 import styles from './Admissions.module.css';
