@@ -27,7 +27,7 @@ export default function Admissions() {
 
       <section className={styles.admissionSection}>
         <h3>Welcome to Delight International School Admissions</h3>
-        <p>At Delight International School, we are excited to welcome new students and families into our vibrant learning community. Our admissions process is designed to ensure that each child's unique abilities and potential are recognized and nurtured from day one.</p>
+        <p>At Delight International School, we are excited to welcome new students and families into our vibrant learning community. Our admissions process is designed to ensure that each child's unique abilities and potential are recognized and nurtured from day one. We are an equal-opportunity institution and does not discriminate based on gender, religion, nationality, or background.</p>
 
         <h3>Admission Process</h3>
         <div className={styles.steps}>
