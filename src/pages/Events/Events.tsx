@@ -71,7 +71,6 @@ export default function Events() {
       />
       <main className={styles.main}>
         <section className={styles.eventsContainer}>
-          <h2 className={styles.sectionTitle}>Upcoming Events</h2>
           <div className={styles.eventsList}>
             {events.map((event) => (
               <article key={event.id} className={styles.eventCard}>
