@@ -5,7 +5,6 @@ import Admissions from './pages/Admissions';
 import Gallery from './pages/Gallery';
 import Events from './pages/Events';
 import Contact from './pages/Contact';
-import Apply from './pages/Apply';
 import './styles/global.css';
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/apply" element={<Apply />} />
       </Routes>
     </Router>
   );
