@@ -41,7 +41,7 @@ export default function About() {
         <p>To provide holistic education—academic, social, and spiritual—to underprivileged members of society, empowering them to realize their full potential, become positive role models, and uplift others along the way.</p>
 
         <h3>Our Vision</h3>
-        <p>To become a beacon of excellence where students are empowered to discover their talents, achieve their dreams, and shape a better world.</p>
+        <p>To utilize available resources to achieve our mission while expanding our infrastructure to cover all levels of education—basic, junior high, senior high, and tertiary—by the grace of God, in pursuit of this vision.</p>
 
         <h3>Our Core Values</h3>
         <div className={styles.values}>
