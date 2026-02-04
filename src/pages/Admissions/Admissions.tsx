@@ -52,11 +52,11 @@ export default function Admissions() {
         <h3>Admission Requirements</h3>
         <p>Parents or guardians should submit the following documents during the admission process:</p>
         <ul className={styles.requirementsList}>
-          <li>Completed application form</li>
-          <li>One recent passport-size photograph</li>
           <li>Copy of birth certificate</li>
+          <li>One recent passport-size photograph</li>
           <li>Previous school report (if applicable)</li>
           <li>Ghana Card Number of parents</li>
+          <li>Residential and digital Address</li>
         </ul>
 
         <div className={styles.applyCta}>
