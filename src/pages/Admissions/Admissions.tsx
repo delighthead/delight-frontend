@@ -57,6 +57,7 @@ export default function Admissions() {
           <li>Previous school report (if applicable)</li>
           <li>Ghana Card Number of parents</li>
           <li>Residential and digital Address</li>
+          <li>Immunization/health record</li>
         </ul>
 
         <div className={styles.applyCta}>
