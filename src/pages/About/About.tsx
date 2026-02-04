@@ -16,7 +16,7 @@ export default function About() {
     { title: 'Mathematics', description: 'Building strong numerical reasoning, logical thinking, and problem-solving skills across all grade levels.' },
     { title: 'English Language', description: 'Enhancing communication through reading, writing, grammar, and comprehension activities.' },
     { title: 'Science', description: 'Encouraging curiosity through practical experiments, environmental awareness, and scientific exploration.' },
-    { title: 'ICT (Information & Communication Technology)', description: 'Preparing students for the digital world with coding, computing, and safe technology practices.' },
+    { title: 'Computing', description: 'Preparing students for the digital world with coding, computing, and safe technology practices.' },
     { title: 'Social Studies', description: 'Fostering global awareness, civic responsibility, and appreciation for culture and history.' },
     { title: 'Creative Arts', description: 'Developing imagination and self-expression through art, music, and drama.' },
     { title: 'Music', description: 'Developing musical skills through, rhythm, and musical appreciation through singing, instrumental practice, listening activities, and performance.' },
