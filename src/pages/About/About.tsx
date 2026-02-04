@@ -38,7 +38,7 @@ export default function About() {
         <p>Delight International School is a modern learning institution dedicated to providing holistic education that nurtures the mind, body, and spirit. We believe that every child is unique and capable of achieving greatness when guided with care, patience, and purpose.</p>
 
         <h3>Our Mission</h3>
-        <p>To provide a world-class education that fosters intellectual curiosity, moral integrity, and lifelong learning, preparing students to make meaningful contributions to society.</p>
+        <p>To provide holistic education—academic, social, and spiritual—to underprivileged members of society, empowering them to realize their full potential, become positive role models, and uplift others along the way.</p>
 
         <h3>Our Vision</h3>
         <p>To become a beacon of excellence where students are empowered to discover their talents, achieve their dreams, and shape a better world.</p>
