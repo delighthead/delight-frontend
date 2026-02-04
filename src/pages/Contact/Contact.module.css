@@ -118,6 +118,38 @@
   margin-bottom: 0.5rem;
 }
 
+.applySection {
+  background: var(--gray);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.applySection h4 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.applySection p {
+  margin-bottom: 1rem;
+}
+
+.applyLink {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--light);
+  padding: 0.65rem 1.2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.applyLink:hover {
+  background-color: #002266;
+}
+
 form {
   display: flex;
   flex-direction: column;
