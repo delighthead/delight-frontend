@@ -89,7 +89,14 @@ export default function Contact() {
         <div className={styles.applySection}>
           <h4>Ready to Apply?</h4>
           <p>Begin your student application online in just a few minutes.</p>
-          <a className={styles.applyLink} href="/apply">Apply Now</a>
+          <a
+            className={styles.applyLink}
+            href="https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=sharing&ouid=114204056174231630483"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Apply Now
+          </a>
         </div>
 
         <form onSubmit={handleSubmit}>
