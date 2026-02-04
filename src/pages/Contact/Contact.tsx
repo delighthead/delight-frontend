@@ -89,7 +89,7 @@ export default function Contact() {
         <div className={styles.applySection}>
           <h4>Ready to Apply?</h4>
           <p>Begin your student application online in just a few minutes.</p>
-          <a className={styles.applyLink} href="/apply">Go to Application Page</a>
+          <a className={styles.applyLink} href="/apply">Apply Now</a>
         </div>
 
         <form onSubmit={handleSubmit}>
