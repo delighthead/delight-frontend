@@ -9,6 +9,7 @@ export default function About() {
     { title: 'Integrity', description: 'Honesty and accountability are at the heart of everything we do.' },
     { title: 'Creativity', description: 'We encourage innovative thinking and problem-solving in all aspects of learning.' },
     { title: 'Teamwork', description: 'We believe in collaboration and community, nurturing unity among students, staff, and families.' },
+    { title: 'Leadership', description: 'Developing confidence and responsibility in students by encouraging initiative, decision-making and positive influence, preparing them to lead with integrity in school and in the wider community.' },
   ];
 
   const subjects = [
