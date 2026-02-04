@@ -47,16 +47,6 @@ export default function Header({ variant = 'default' }: HeaderProps) {
               Contact
             </Link>
           </li>
-          <li>
-            <a
-              className={styles.applyBtn}
-              href="https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=sharing&ouid=114204056174231630483"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Apply Now
-            </a>
-          </li>
         </ul>
       </nav>
     </header>
