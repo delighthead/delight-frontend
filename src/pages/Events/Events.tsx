@@ -47,6 +47,19 @@ export default function Events() {
     },
   ];
 
+  const pastEvents = [
+    {
+      id: 1,
+      title: 'Inter-House Sports Festival',
+      description: 'A vibrant day of sportsmanship, teamwork, and school spirit across all houses.',
+    },
+    {
+      id: 2,
+      title: 'End of Term Thanksgiving Service',
+      description: 'A reflective service celebrating achievements and gratitude with students and families.',
+    },
+  ];
+
   return (
     <div className={styles.page}>
       <Header variant="default" />
@@ -58,6 +71,7 @@ export default function Events() {
       />
       <main className={styles.main}>
         <section className={styles.eventsContainer}>
+          <h2 className={styles.sectionTitle}>Upcoming Events</h2>
           <div className={styles.eventsList}>
             {events.map((event) => (
               <article key={event.id} className={styles.eventCard}>
@@ -70,6 +84,20 @@ export default function Events() {
                   <p className={styles.eventLocation}>📍 {event.location}</p>
                   <p className={styles.eventDescription}>{event.description}</p>
                 </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.pastEventsContainer}>
+          <h2 className={styles.sectionTitle}>Past Events</h2>
+          <div className={styles.pastEventsGrid}>
+            {pastEvents.map((event) => (
+              <article key={event.id} className={styles.pastEventCard}>
+                <div className={styles.pastEventHeader}>
+                  <h3 className={styles.pastEventTitle}>{event.title}</h3>
+                </div>
+                <p className={styles.pastEventDescription}>{event.description}</p>
               </article>
             ))}
           </div>
