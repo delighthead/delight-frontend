@@ -73,14 +73,6 @@ export default function Home() {
             <Link to="/admissions">Admissions</Link>
             <Link to="/gallery">Gallery</Link>
             <Link to="/contact">Contact</Link>
-            <a
-              className={styles.applyBtn}
-              href="https://docs.google.com/forms/d/e/1FAIpQLSe0gID4VYQBk6m1ZTvgodypO1bKIYs1m43R22ueAxqXClhK4Q/viewform?usp=sharing&ouid=114204056174231630483"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Apply Now
-            </a>
           </nav>
         </div>
       </header>
