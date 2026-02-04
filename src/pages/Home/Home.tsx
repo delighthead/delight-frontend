@@ -113,7 +113,7 @@ export default function Home() {
         </div>
         <div className={styles.heroImages}>
           <img src="https://images.unsplash.com/photo-1613896527026-f195d5c818ed?w=400&h=300&fit=crop" alt="African students learning" className={styles.heroImg1} />
-          <img src="/files/school%20logo.jpg" alt="Delight International School logo" className={styles.heroImg2} />
+          <img src="https://images.unsplash.com/photo-1594608661623-aa0bd3a69799?w=350&h=250&fit=crop" alt="Classroom" className={styles.heroImg2} />
           <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=300&h=200&fit=crop" alt="Happy African students" className={styles.heroImg3} />
         </div>
         <div className={styles.scrollIndicator}>
