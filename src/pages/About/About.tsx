@@ -18,6 +18,7 @@ export default function About() {
     { title: 'ICT (Information & Communication Technology)', description: 'Preparing students for the digital world with coding, computing, and safe technology practices.' },
     { title: 'Social Studies', description: 'Fostering global awareness, civic responsibility, and appreciation for culture and history.' },
     { title: 'Creative Arts', description: 'Developing imagination and self-expression through art, music, and drama.' },
+    { title: 'Music', description: 'Developing musical skills through, rhythm, and musical appreciation through singing, instrumental practice, listening activities, and performance.' },
     { title: 'Religious & Moral Education', description: 'Instilling values such as honesty, kindness, and respect for diversity.' },
     { title: 'Physical Education', description: 'Promoting fitness, teamwork, and discipline through structured sports and activities.' },
   ];
