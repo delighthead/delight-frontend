@@ -7,7 +7,7 @@ export default function Home() {
   const backgroundImages = [
     'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&h=1080&fit=crop', // Students graduation
     'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1920&h=1080&fit=crop', // University library
-    'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1920&h=1080&fit=crop', // Classroom learning
+    '/files/IMG-20260205-WA0024.jpg', // Classroom learning
     'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&h=1080&fit=crop', // Students studying
     'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1920&h=1080&fit=crop', // Teacher with students
   ];
