@@ -53,8 +53,8 @@ export default function Home() {
         <span className={styles.float3}>🎓</span>
         <img
           className={`${styles.float4} ${styles.floatLogo}`}
-          src="/images/logo.jpg"
-          alt="Delight International School logo"
+          src="/files/IMG-20260205-WA0024.jpg"
+          alt="Floating highlight"
         />
         <span className={styles.float5}>📐</span>
         <span className={styles.float6}>🔬</span>
