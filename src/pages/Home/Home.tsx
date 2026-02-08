@@ -270,6 +270,13 @@ export default function Home() {
             >
               Apply Now
             </a>
+            <a
+              className={styles.ctaSecondaryBtn}
+              href="/files/ADMISSION%20FORM%20NEW.pdf"
+              download
+            >
+              Download Form
+            </a>
           </div>
         </div>
       </section>
