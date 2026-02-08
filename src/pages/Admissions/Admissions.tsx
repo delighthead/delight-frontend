@@ -72,7 +72,13 @@ export default function Admissions() {
             >
               Apply Now
             </a>
-            <button type="button" className={styles.downloadBtn}>Download Form</button>
+            <a
+              className={styles.downloadBtn}
+              href="/files/ADMISSION%20FORM%20NEW.pdf"
+              download
+            >
+              Download Form
+            </a>
           </div>
         </div>
       </section>
