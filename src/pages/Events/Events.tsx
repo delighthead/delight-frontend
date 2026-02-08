@@ -27,7 +27,7 @@ export default function Events() {
       date: 'March 23, 2026',
       description: 'Celebrate diversity through music, dance, food, and cultural performances from around the world.',
       location: 'School Grounds',
-      image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&h=300&fit=crop',
+      image: '/files/IMG-20260205-WA0024.jpg',
     },
     {
       id: 4,
