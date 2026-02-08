@@ -3,6 +3,12 @@ import styles from './Gallery.module.css';
 
 export default function Gallery() {
   const imageFiles = [
+    'IMG-20250305-WA0101.jpg',
+    'IMG-20250320-WA0020.jpg',
+    'IMG-20250802-WA0019.jpg',
+    'IMG-20250802-WA0021.jpg',
+    '1jpg',
+    '1jpg (Copy)',
     'Pasted image.png',
     'Pasted image (2).png',
     'Pasted image (3).png',
