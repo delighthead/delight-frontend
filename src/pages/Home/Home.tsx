@@ -103,9 +103,13 @@ export default function Home() {
             >
               Start Your Journey <span>→</span>
             </a>
-            <button type="button" className={styles.secondaryBtn}>
+            <a
+              className={styles.secondaryBtn}
+              href="/files/ADMISSION%20FORM%20NEW.pdf"
+              download
+            >
               Download Form
-            </button>
+            </a>
             <Link to="/gallery" className={styles.secondaryBtn}>
               <span className={styles.playIcon}>▶</span> Virtual Tour
             </Link>
