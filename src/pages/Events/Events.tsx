@@ -6,14 +6,6 @@ import styles from './Events.module.css';
 export default function Events() {
   const events = [
     {
-      id: 1,
-      title: 'Career Day',
-      date: 'February 13, 2026',
-      description: 'Join us for a day of excitement as our students dress up as their future career.',
-      location: 'School Grounds',
-      image: '/images/1jpg%20(Copy)',
-    },
-    {
       id: 2,
       title: 'Excursion to Boti and Akaa Waterfalls',
       date: 'March 7, 2026',
@@ -57,6 +49,11 @@ export default function Events() {
       id: 2,
       title: 'End of Term Thanksgiving Service',
       description: 'A reflective service celebrating achievements and gratitude with students and families.',
+    },
+    {
+      id: 3,
+      title: 'Career Day',
+      description: 'Join us for a day of excitement as our students dress up as their future career.',
     },
   ];
 
