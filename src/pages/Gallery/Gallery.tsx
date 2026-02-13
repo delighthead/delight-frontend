@@ -38,6 +38,34 @@ export default function Gallery() {
     alt: `Gallery Image ${index + 1}`,
   }));
 
+  const careerDayFiles = [
+    'Pasted image.png',
+    'Pasted image (2).png',
+    'Pasted image (3).png',
+    'Pasted image (4).png',
+    'Pasted image (5).png',
+    'Pasted image (6).png',
+    'Pasted image (7).png',
+    'Pasted image (8).png',
+    'Pasted image (9).png',
+    'Pasted image (10).png',
+    'Pasted image (11).png',
+    'Pasted image (12).png',
+    'Pasted image (13).png',
+    'Pasted image (14).png',
+    'Pasted image (15).png',
+    'Pasted image (16).png',
+    'Pasted image (17).png',
+    'Pasted image (18).png',
+    'Pasted image (19).png',
+    'Pasted image (20).png',
+  ];
+
+  const careerDayImages = careerDayFiles.map((file, index) => ({
+    src: `/career%20day%202026/${encodeURIComponent(file)}`,
+    alt: `Career Day 2026 Image ${index + 1}`,
+  }));
+
   return (
     <div className={styles.page}>
       <Header variant="cream" />
@@ -55,6 +83,11 @@ export default function Gallery() {
           ))}
         </div>
         <h3 className={styles.galleryTitle}>Career Day 2026</h3>
+        <div className={styles.galleryContainer}>
+          {careerDayImages.map((image, index) => (
+            <img key={index} src={image.src} alt={image.alt} />
+          ))}
+        </div>
       </section>
 
       <Footer />
