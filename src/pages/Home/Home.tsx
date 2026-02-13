@@ -220,7 +220,7 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.programCard}>
-            <img src="https://images.unsplash.com/photo-1613896527026-f195d5c818ed?w=400&h=250&fit=crop" alt="African primary students" />
+            <img src="/files/building.png" alt="School building" />
             <div className={styles.programContent}>
               <span className={styles.programAge}>Ages 6-11</span>
               <h3>Primary School</h3>
