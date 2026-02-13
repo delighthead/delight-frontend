@@ -54,6 +54,7 @@ export default function Gallery() {
             <img key={index} src={image.src} alt={image.alt} />
           ))}
         </div>
+        <h3 className={styles.galleryTitle}>Career Day 2026</h3>
       </section>
 
       <Footer />
