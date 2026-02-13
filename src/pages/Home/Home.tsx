@@ -48,6 +48,11 @@ export default function Home() {
     <div className={styles.page}>
       {/* Animated Background Elements */}
       <div className={styles.floatingElements}>
+        <img
+          className={`${styles.float2} ${styles.floatLogo}`}
+          src="/files/building.png"
+          alt="Floating building"
+        />
         <span className={styles.float3}>🎓</span>
         <img
           className={`${styles.float4} ${styles.floatLogo}`}
