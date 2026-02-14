@@ -39,6 +39,22 @@ export default function Gallery() {
   }));
 
   const careerDayFiles = [
+    'IMG-20250220-WA0012.jpg',
+    'IMG-20250305-WA0073.jpg',
+    'IMG-20250305-WA0098.jpg',
+    'IMG-20250305-WA0117.jpg',
+    'IMG-20250305-WA0156.jpg',
+    'IMG-20250305-WA0183.jpg',
+    'IMG-20250305-WA0211.jpg',
+    'IMG-20250305-WA0231.jpg',
+    'IMG-20250305-WA0234.jpg',
+    'IMG-20250305-WA0235.jpg',
+    'IMG-20250305-WA0270.jpg',
+    'IMG-20250305-WA0291.jpg',
+    'IMG-20250305-WA0292.jpg',
+    'IMG-20250305-WA0294.jpg',
+    'IMG-20250305-WA0295.jpg',
+    'IMG-20250305-WA0297.jpg',
     'Pasted image.png',
     'Pasted image (2).png',
     'Pasted image (3).png',
