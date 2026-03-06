@@ -6,14 +6,6 @@ import styles from './Events.module.css';
 export default function Events() {
   const events = [
     {
-      id: 2,
-      title: 'Excursion to Boti and Akaa Waterfalls',
-      date: 'March 7, 2026',
-      description: 'Students will learn about waterfalls and river systems. Understand tourism and environmental conservation. Observe physical features studied in Geography. Learn teamwork, discipline, and time management.',
-      location: 'Boti and Akaa Waterfalls',
-      image: '/images/Picture1.png',
-    },
-    {
       id: 3,
       title: 'Cultural Day / Reading competition',
       date: 'March 23, 2026',
@@ -40,6 +32,11 @@ export default function Events() {
   ];
 
   const pastEvents = [
+    {
+      id: 4,
+      title: 'Excursion to Boti and Akaa Waterfalls',
+      description: 'Students learned about waterfalls and river systems, tourism and environmental conservation, and observed physical features studied in Geography while building teamwork, discipline, and time management.',
+    },
     {
       id: 1,
       title: 'Inter-House Sports Festival',
