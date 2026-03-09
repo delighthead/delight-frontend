@@ -158,28 +158,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gallery Preview Section */}
-      <section className={styles.gallerySection}>
-        <div className={styles.galleryGrid}>
-          <div className={styles.galleryItem}>
-            <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=400&fit=crop" alt="Library" />
-            <div className={styles.galleryOverlay}><span>📚 Our Library</span></div>
-          </div>
-          <div className={styles.galleryItem}>
-            <img src="https://images.unsplash.com/photo-1584697964358-3e14ca57658b?w=600&h=400&fit=crop" alt="African students at computer" />
-            <div className={styles.galleryOverlay}><span>💻 Computer Lab</span></div>
-          </div>
-          <div className={styles.galleryItem}>
-            <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&h=400&fit=crop" alt="African children playing" />
-            <div className={styles.galleryOverlay}><span>🎢 Playground</span></div>
-          </div>
-          <div className={styles.galleryItem}>
-            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&h=400&fit=crop" alt="Science Lab" />
-            <div className={styles.galleryOverlay}><span>🔬 Science Lab</span></div>
-          </div>
-        </div>
-      </section>
-
       {/* About Preview */}
       <section className={styles.aboutSection}>
         <div className={styles.aboutImages}>
