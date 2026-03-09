@@ -82,6 +82,30 @@ export default function Gallery() {
     alt: `Career Day 2026 Image ${index + 1}`,
   }));
 
+  const botiAkaaFiles = [
+    'WhatsApp Image 2026-03-07 at 4.37.22 PM(1).jpeg',
+    'WhatsApp Image 2026-03-07 at 4.37.22 PM.jpeg',
+    'WhatsApp Image 2026-03-07 at 4.37.23 PM(1).jpeg',
+    'WhatsApp Image 2026-03-07 at 4.37.23 PM(10).jpeg',
+    'WhatsApp Image 2026-03-07 at 4.37.23 PM(11).jpeg',
+    'WhatsApp Image 2026-03-07 at 4.37.23 PM(2).jpeg',
+    'WhatsApp Image 2026-03-07 at 4.37.23 PM(3).jpeg',
+    'WhatsApp Image 2026-03-07 at 4.37.23 PM(4).jpeg',
+    'WhatsApp Image 2026-03-07 at 4.37.23 PM(5).jpeg',
+    'WhatsApp Image 2026-03-07 at 4.37.23 PM(6).jpeg',
+    'WhatsApp Image 2026-03-07 at 4.37.23 PM(7).jpeg',
+    'WhatsApp Image 2026-03-07 at 4.37.23 PM(8).jpeg',
+    'WhatsApp Image 2026-03-07 at 4.37.23 PM(9).jpeg',
+    'WhatsApp Image 2026-03-07 at 4.37.23 PM.jpeg',
+    'WhatsApp Image 2026-03-07 at 9.58.43 PM.jpeg',
+    'WhatsApp Image 2026-03-07 at 9.58.46 PM.jpeg',
+  ];
+
+  const botiAkaaImages = botiAkaaFiles.map((file, index) => ({
+    src: `/Excursion%20to%20Boti/${encodeURIComponent(file)}`,
+    alt: `Boti & Akaa 2026 Image ${index + 1}`,
+  }));
+
   return (
     <div className={styles.page}>
       <Header variant="cream" />
@@ -101,6 +125,12 @@ export default function Gallery() {
         <h3 className={styles.galleryTitle}>Career Day 2026</h3>
         <div className={styles.galleryContainer}>
           {careerDayImages.map((image, index) => (
+            <img key={index} src={image.src} alt={image.alt} />
+          ))}
+        </div>
+        <h3 className={styles.galleryTitle}>Boti &amp; Akaa 2026</h3>
+        <div className={styles.galleryContainer}>
+          {botiAkaaImages.map((image, index) => (
             <img key={index} src={image.src} alt={image.alt} />
           ))}
         </div>
