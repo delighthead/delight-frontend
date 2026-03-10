@@ -8,7 +8,7 @@ export default function Events() {
     {
       id: 3,
       title: 'Cultural Day / Reading competition',
-      date: 'March 23, 2026',
+      date: 'March 13, 2026',
       description: 'Celebrate diversity through music, dance, food, and cultural performances from around the world.',
       location: 'School Grounds',
       image: '/files/IMG-20260205-WA0024.jpg',
