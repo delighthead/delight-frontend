@@ -68,7 +68,7 @@ router.get("/:id", authRequired, async (req, res) => {
 });
 
 // ADMIN: create student profile (user must already exist with STUDENT role)
-router.post("/", authRequired, requireRole("ADMIN"), async (req, res) => {
+router.post("/", authRequired, requireRole("ADMIN", "TEACHER"), async (req, res) => {
   try {
     const { userId, admissionNo, dateOfBirth, gender, address, classId, parentId } = req.body;
 
