@@ -32,7 +32,7 @@ function App() {
 
         {/* Portal */}
         <Route path="/portal/login" element={<Login />} />
-        <Route path="/portal/register" element={<Register />} />
+        {/* Register route removed */}
         <Route path="/portal/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardHome />} />
           <Route path="students" element={<Students />} />
