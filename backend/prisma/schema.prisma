@@ -202,6 +202,7 @@ model Grade {
   remarks      String?
 
   createdAt    DateTime @default(now())
+  is_active    Boolean  @default(false)
 }
 
 // ─── Timetable ──────────────────────────────────────────

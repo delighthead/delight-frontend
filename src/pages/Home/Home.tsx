@@ -116,6 +116,13 @@ export default function Home() {
             <Link to="/gallery" className={styles.secondaryBtn}>
               <span className={styles.playIcon}>▶</span> Virtual Tour
             </Link>
+              {/* Login and Signup Buttons */}
+              <Link to="/portal/login" className={styles.secondaryBtn}>
+                Login
+              </Link>
+              <Link to="/portal/register" className={styles.secondaryBtn}>
+                Sign Up
+              </Link>
           </div>
         </div>
         <div className={styles.heroImages}>
