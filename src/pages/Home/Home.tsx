@@ -120,9 +120,7 @@ export default function Home() {
               <Link to="/portal/login" className={styles.secondaryBtn}>
                 Login
               </Link>
-              <Link to="/portal/register" className={styles.secondaryBtn}>
-                Sign Up
-              </Link>
+              {/* Sign Up button removed */}
           </div>
         </div>
         <div className={styles.heroImages}>
