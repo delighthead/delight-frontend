@@ -17,6 +17,10 @@ router.post("/register", async (req, res) => {
     if (!VALID_ROLES.includes(role)) {
       return res.status(400).json({ error: `role must be one of: ${VALID_ROLES.join(", ")}` });
     }
+    // Prevent public registration as ADMIN
+    if (role === "ADMIN") {
+      return res.status(403).json({ error: "Admin accounts must be created by an existing admin." });
+    }
 
     const existing = await prisma.user.findUnique({ where: { email } });
     if (existing) return res.status(409).json({ error: "Email already registered" });
