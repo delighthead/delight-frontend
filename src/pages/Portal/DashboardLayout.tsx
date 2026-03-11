@@ -19,6 +19,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Grades", path: "/portal/dashboard/grades", roles: ["ADMIN", "TEACHER", "STUDENT", "PARENT"] },
   { label: "Timetable", path: "/portal/dashboard/timetable", roles: ["ADMIN", "TEACHER", "STUDENT"] },
   { label: "Fees", path: "/portal/dashboard/fees", roles: ["ADMIN", "STUDENT", "PARENT"] },
+    { label: "User Management", path: "/portal/dashboard/user-management", roles: ["ADMIN"] },
 ];
 
 export default function DashboardLayout() {

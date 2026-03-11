@@ -38,6 +38,7 @@ function App() {
           <Route path="students" element={<Students />} />
           <Route path="teachers" element={<Teachers />} />
           <Route path="classes" element={<Classes />} />
+          <Route path="user-management" element={require('./pages/Portal/UserManagement').default} />
           <Route path="subjects" element={<Subjects />} />
           <Route path="attendance" element={<Attendance />} />
           <Route path="grades" element={<Grades />} />
