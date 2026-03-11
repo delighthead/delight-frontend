@@ -47,6 +47,11 @@ export default function Header({ variant = 'default' }: HeaderProps) {
               Contact
             </Link>
           </li>
+          <li>
+            <Link to="/portal/login" className={location.pathname.startsWith('/portal') ? styles.active : ''}>
+              Portal
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
