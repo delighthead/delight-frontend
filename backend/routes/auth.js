@@ -5,13 +5,20 @@ const bcrypt = require('bcrypt');
 
 // Register user
 router.post('/register', async (req, res) => {
-  const { Username, Password, Role, Email } = req.body;
-  const hash = await bcrypt.hash(Password, 10);
-  await db.query(
-    'INSERT INTO Users (Username, PasswordHash, Role, Email) VALUES (?, ?, ?, ?)',
-    [Username, hash, Role, Email]
-  );
-  res.json({ message: 'User registered' });
+  try {
+    const { Username, Password, Role, Email } = req.body;
+    if (!Username || !Password || !Role || !Email) {
+      return res.status(400).json({ ok: false, error: 'Missing required fields' });
+    }
+    const hash = await bcrypt.hash(Password, 10);
+    await db.query(
+      'INSERT INTO Users (Username, PasswordHash, Role, Email) VALUES (?, ?, ?, ?)',
+      [Username, hash, Role, Email]
+    );
+    res.json({ ok: true, message: 'User registered' });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: 'Registration failed', details: err.message });
+  }
 });
 
 // Login user
