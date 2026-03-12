@@ -18,6 +18,7 @@ import Grades from './pages/Portal/Grades';
 import Timetable from './pages/Portal/Timetable';
 import Fees from './pages/Portal/Fees';
 import './styles/global.css';
+import UserManagement from './pages/Portal/UserManagement';
 
 function App() {
   return (

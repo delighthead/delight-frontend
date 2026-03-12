@@ -1,11 +1,5 @@
 // ...existing code...
 
-interface UserForm {
-  name: string;
-  email: string;
-  password: string;
-  role: string;
-}
 
 export default function UserManagement() {
   return (
