@@ -10,6 +10,7 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [role, setRole] = useState("ADMIN");
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -17,10 +18,10 @@ export default function SignUp() {
     setLoading(true);
     try {
       // Replace with your actual API call
-      const res = await fetch("/api/v1/auth/register", {
+      const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, confirm_password: password })
+        body: JSON.stringify({ Username: name, Password: password, Role: role, Email: email })
       });
       const data = await res.json();
       if (!data.ok) throw new Error(data.error || "Sign up failed");
@@ -38,12 +39,33 @@ export default function SignUp() {
         <h2>Sign Up</h2>
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Username"
           value={name}
           onChange={e => setName(e.target.value)}
           required
           className={styles.input}
         />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+          className={styles.input}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          required
+          className={styles.input}
+        />
+        <select value={role} onChange={e => setRole(e.target.value)} className={styles.input}>
+          <option value="ADMIN">Admin</option>
+          <option value="TEACHER">Teacher</option>
+          <option value="PARENT">Parent</option>
+        </select>
         <input
           type="email"
           placeholder="Email"
