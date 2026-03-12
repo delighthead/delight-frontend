@@ -67,9 +67,7 @@ export default function Login() {
             {loading ? "Signing in..." : "Sign In"}
           </button>
 
-          <p className={styles.switchLink}>
-            Don't have an account? <Link to="/portal/register">Register</Link>
-          </p>
+          {/* Register link removed */}
         </form>
       </div>
     </div>
