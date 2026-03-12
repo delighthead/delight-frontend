@@ -20,7 +20,7 @@ export default function SignUp() {
       const res = await fetch("/api/v1/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, name })
+        body: JSON.stringify({ email, password, confirm_password: password })
       });
       const data = await res.json();
       if (!data.ok) throw new Error(data.error || "Sign up failed");
