@@ -1,6 +1,4 @@
-import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { apiPost } from "../../lib/api";
 import styles from "./Auth.module.css";
 
 export default function Register() {
@@ -11,4 +9,4 @@ export default function Register() {
     </div>
   );
 }
-  const [loading, setLoading] = useState(false);
+// Removed unused loading state

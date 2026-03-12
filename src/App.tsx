@@ -6,7 +6,7 @@ import Gallery from './pages/Gallery';
 import Events from './pages/Events';
 import Contact from './pages/Contact';
 import Login from './pages/Portal/Login';
-import Register from './pages/Portal/Register';
+// ...existing code...
 import DashboardLayout from './pages/Portal/DashboardLayout';
 import DashboardHome from './pages/Portal/DashboardHome';
 import Students from './pages/Portal/Students';
@@ -38,7 +38,7 @@ function App() {
           <Route path="students" element={<Students />} />
           <Route path="teachers" element={<Teachers />} />
           <Route path="classes" element={<Classes />} />
-          <Route path="user-management" element={require('./pages/Portal/UserManagement').default} />
+            <Route path="user-management" element={<UserManagement />} />
           <Route path="subjects" element={<Subjects />} />
           <Route path="attendance" element={<Attendance />} />
           <Route path="grades" element={<Grades />} />
