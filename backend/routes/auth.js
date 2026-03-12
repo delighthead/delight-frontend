@@ -5,6 +5,15 @@ const bcrypt = require('bcrypt');
 
 // Register user
 router.post('/register', async (req, res) => {
+  // Utility endpoint to delete all users (for admin/testing only)
+  router.post('/delete-all-users', async (req, res) => {
+    try {
+      await db.query('DELETE FROM Users');
+      res.json({ ok: true, message: 'All users deleted' });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: 'Delete failed', details: err.message });
+    }
+  });
   try {
     const { Username, Password, Role, Email } = req.body;
     if (!Username || !Password || !Role || !Email) {
