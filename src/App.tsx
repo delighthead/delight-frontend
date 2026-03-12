@@ -6,6 +6,7 @@ import Gallery from './pages/Gallery';
 import Events from './pages/Events';
 import Contact from './pages/Contact';
 import Login from './pages/Portal/Login';
+import SignUp from './pages/Portal/SignUp';
 // ...existing code...
 import DashboardLayout from './pages/Portal/DashboardLayout';
 import DashboardHome from './pages/Portal/DashboardHome';
@@ -33,7 +34,7 @@ function App() {
 
         {/* Portal */}
         <Route path="/portal/login" element={<Login />} />
-        {/* Register route removed */}
+        <Route path="/portal/signup" element={<SignUp />} />
         <Route path="/portal/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardHome />} />
           <Route path="students" element={<Students />} />
