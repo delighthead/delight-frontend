@@ -82,25 +82,7 @@ export default function Gallery() {
     alt: `Career Day 2026 Image ${index + 1}`,
   }));
 
-  const ghanaMonthFiles = [
-    'IMG20260313090630.jpg',
-    'IMG20260313090642.jpg',
-    'IMG20260313091211.jpg',
-    'IMG20260313091334.jpg',
-    'IMG20260313091406.jpg',
-    'IMG20260313091451.jpg',
-    'IMG20260313100559.jpg',
-    'IMG20260313102453.jpg',
-    'IMG20260313113337.jpg',
-    'IMG20260313113520.jpg',
-    'IMG20260313113631.jpg',
-    'IMG20260313113759.jpg',
-    'IMG20260313114010.jpg',
-    'IMG20260313114024.jpg',
-    'IMG20260313133838.jpg',
-    'IMG20260313135312.jpg',
-    'IMG20260313135330.jpg',
-  ];
+  const ghanaMonthFiles = [];
 
   const ghanaMonthImages = ghanaMonthFiles.map((file, index) => ({
     src: `/Ghana%20Month%20and%20Mega%20Fruit%20Day/${encodeURIComponent(file)}`,
@@ -153,12 +135,7 @@ export default function Gallery() {
             <img key={index} src={image.src} alt={image.alt} />
           ))}
         </div>
-        <h3 className={styles.galleryTitle}>Ghana Month and Mega Fruit Day</h3>
-        <div className={styles.galleryContainer}>
-          {ghanaMonthImages.map((image, index) => (
-            <img key={index} src={image.src} alt={image.alt} />
-          ))}
-        </div>
+        {/* Ghana Month and Mega Fruit Day section removed as requested */}
         <h3 className={styles.galleryTitle}>Boti &amp; Akaa 2026</h3>
         <div className={styles.galleryContainer}>
           {botiAkaaImages.map((image, index) => (
