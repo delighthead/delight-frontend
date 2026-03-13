@@ -6,14 +6,6 @@ import styles from './Events.module.css';
 export default function Events() {
   const events = [
     {
-      id: 3,
-      title: 'Cultural Day / Reading competition',
-      date: 'March 13, 2026',
-      description: 'Celebrate diversity through music, dance, food, and cultural performances from around the world.',
-      location: 'School Grounds',
-      image: '/files/IMG-20260205-WA0024.jpg',
-    },
-    {
       id: 4,
       title: 'Exams week',
       date: 'April 13, 2026',
@@ -32,6 +24,11 @@ export default function Events() {
   ];
 
   const pastEvents = [
+    {
+      id: 6,
+      title: 'Cultural Day / Reading competition',
+      description: 'Celebrate diversity through music, dance, food, and cultural performances from around the world.',
+    },
     {
       id: 4,
       title: 'Excursion to Boti and Akaa Waterfalls',
