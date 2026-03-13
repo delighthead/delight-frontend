@@ -66,22 +66,6 @@ export default function SignUp() {
           <option value="TEACHER">Teacher</option>
           <option value="PARENT">Parent</option>
         </select>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-          className={styles.input}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          required
-          className={styles.input}
-        />
         <button type="submit" className={styles.primaryBtn} disabled={loading}>
           {loading ? "Signing up..." : "Sign Up"}
         </button>
