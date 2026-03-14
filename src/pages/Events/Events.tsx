@@ -8,7 +8,7 @@ export default function Events() {
     {
       id: 4,
       title: 'Exams week',
-  date: 'April 7, 2026',
+      date: 'April 7, 2026',
       description: 'A focused week for assessments across classes as students demonstrate their learning progress.',
       location: 'School Campus',
       image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=300&fit=crop',
