@@ -82,12 +82,7 @@ export default function Gallery() {
     alt: `Career Day 2026 Image ${index + 1}`,
   }));
 
-  const ghanaMonthFiles = [];
-
-  const ghanaMonthImages = ghanaMonthFiles.map((file, index) => ({
-    src: `/Ghana%20Month%20and%20Mega%20Fruit%20Day/${encodeURIComponent(file)}`,
-    alt: `Ghana Month and Mega Fruit Day Image ${index + 1}`,
-  }));
+  // ...existing code...
 
   const botiAkaaFiles = [
     'WhatsApp Image 2026-03-07 at 4.37.22 PM(1).jpeg',
