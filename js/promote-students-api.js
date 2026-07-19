@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function loadSettings() {
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/settings");
+      const res = await fetch("/api/settings");
       const data = await res.json();
       const settings = data.settings || {};
 
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function loades() {
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/branches", {
+      const res = await fetch("/api/branches", {
         headers: authHeaders()
       });
 
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function loadClasses() {
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/classes", {
+      const res = await fetch("/api/classes", {
         headers: authHeaders()
       });
 
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
 
       const res = await fetch(
-        `http://127.0.0.1:5000/api/students?branch_id=${branchSelect.value}`,
+        `/api/students?branch_id=${branchSelect.value}`,
         { headers: authHeaders() }
       );
 
@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
     promoteBtn.textContent = "Promoting...";
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/promotions/students", {
+      const res = await fetch("/api/promotions/students", {
         method: "POST",
         headers: jsonHeaders(),
         body: JSON.stringify({
@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!historyTableBody) return;
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/promotions/history", {
+      const res = await fetch("/api/promotions/history", {
         headers: authHeaders()
       });
 

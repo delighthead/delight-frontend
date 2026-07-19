@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
       throw new Error("Please login as a teacher.");
     }
 
-    const response = await fetch(`http://127.0.0.1:5000/api/teachers/by-user/${user.id}`);
+    const response = await fetch(`/api/teachers/by-user/${user.id}`);
     const data = await response.json();
 
     if (!response.ok) {
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       const teacher = await getLoggedInTeacher();
 
-      const response = await fetch(`http://127.0.0.1:5000/api/announcements?branch_id=${teacher.branch_id}`, {
+      const response = await fetch(`/api/announcements?branch_id=${teacher.branch_id}`, {
         headers: getAuthOnlyHeaders()
       });
       const data = await response.json();

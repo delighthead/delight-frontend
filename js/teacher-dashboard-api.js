@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
       throw new Error("This dashboard is for teachers only.");
     }
 
-    const response = await fetch(`http://127.0.0.1:5000/api/teachers/by-user/${user.id}`);
+    const response = await fetch(`/api/teachers/by-user/${user.id}`);
     const data = await response.json();
 
     if (!response.ok) {
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       const teacher = await getLoggedInTeacher();
 
-      const studentsResponse = await fetch(`http://127.0.0.1:5000/api/teachers/${teacher.id}/students`);
+      const studentsResponse = await fetch(`/api/teachers/${teacher.id}/students`);
       const studentsData = await studentsResponse.json();
 
       const students = studentsData.students || [];

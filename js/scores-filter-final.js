@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!branchSelect) return;
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/branches", {
+      const res = await fetch("/api/branches", {
         headers: authHeaders()
       });
 
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!classSelect) return;
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/classes", {
+      const res = await fetch("/api/classes", {
         headers: authHeaders()
       });
 
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function loadSettings() {
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/settings");
+      const res = await fetch("/api/settings");
       const data = await res.json();
       const settings = data.settings || {};
 
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </tr>
       `;
 
-      const res = await fetch(`http://127.0.0.1:5000/api/scores?${params.toString()}`, {
+      const res = await fetch(`/api/scores?${params.toString()}`, {
         headers: authHeaders()
       });
 
@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const scoreId = select.dataset.id;
       const approval_status = select.value;
 
-      const res = await fetch(`http://127.0.0.1:5000/api/scores/${scoreId}/approval`, {
+      const res = await fetch(`/api/scores/${scoreId}/approval`, {
         method: "PATCH",
         headers: jsonHeaders(),
         body: JSON.stringify({ approval_status })

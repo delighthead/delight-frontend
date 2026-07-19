@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
       throw new Error("Please login as a teacher.");
     }
 
-    const response = await fetch(`http://127.0.0.1:5000/api/teachers/by-user/${user.id}`);
+    const response = await fetch(`/api/teachers/by-user/${user.id}`);
     const data = await response.json();
 
     if (!response.ok) {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loggedInTeacher = await getLoggedInTeacher();
 
-    const response = await fetch(`http://127.0.0.1:5000/api/teachers/${loggedInTeacher.id}/students`);
+    const response = await fetch(`/api/teachers/${loggedInTeacher.id}/students`);
     const data = await response.json();
 
     studentSelect.innerHTML = '<option value="">Select student</option>';
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         loggedInTeacher = await getLoggedInTeacher();
       }
 
-      const response = await fetch(`http://127.0.0.1:5000/api/scores?branch_id=${loggedInTeacher.branch_id}`, {
+      const response = await fetch(`/api/scores?branch_id=${loggedInTeacher.branch_id}`, {
         headers: getAuthOnlyHeaders()
       });
 
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      const assignedResponse = await fetch(`http://127.0.0.1:5000/api/teachers/${loggedInTeacher.id}/students`);
+      const assignedResponse = await fetch(`/api/teachers/${loggedInTeacher.id}/students`);
       const assignedData = await assignedResponse.json();
       const assignedIds = new Set((assignedData.students || []).map(s => Number(s.id)));
 
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
           approval_status: "pending"
         };
 
-        const response = await fetch("http://127.0.0.1:5000/api/scores", {
+        const response = await fetch("/api/scores", {
           method: "POST",
           headers: getAuthHeaders(),
           body: JSON.stringify(scoreData)
@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function loadExcelSettings() {
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/settings");
+      const res = await fetch("/api/settings");
       const data = await res.json();
       const settings = data.settings || {};
 
@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!branchSelect) return;
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/branches", {
+      const res = await fetch("/api/branches", {
         headers: getHeaders()
       });
 
@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!classSelect) return;
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/classes", {
+      const res = await fetch("/api/classes", {
         headers: getHeaders()
       });
 
@@ -302,7 +302,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     try {
-      const res = await fetch(`http://127.0.0.1:5000/api/scores/excel/template?${params.toString()}`, {
+      const res = await fetch(`/api/scores/excel/template?${params.toString()}`, {
         headers: getHeaders()
       });
 
@@ -353,7 +353,7 @@ document.addEventListener("DOMContentLoaded", function () {
     uploadBtn.textContent = "Uploading...";
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/scores/excel/upload", {
+      const res = await fetch("/api/scores/excel/upload", {
         method: "POST",
         headers: getHeaders(),
         body: formData

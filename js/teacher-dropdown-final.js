@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const host = window.location.hostname;
   const API =
     host === "localhost" || host === "127.0.0.1"
-      ? "http://127.0.0.1:5000"
+      ? ""
       : "";
 
   async function loadTeacherDropdownOnly() {

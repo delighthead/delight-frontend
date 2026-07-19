@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const API = "http://127.0.0.1:5000";
+  const API = "";
 
   const quickBranch = document.getElementById("quick_branch_id");
   const quickClass = document.getElementById("quick_class_id");

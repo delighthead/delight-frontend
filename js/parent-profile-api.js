@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function studentPhoto(child) {
     if (child.profile_picture) {
-      return `<img src="http://127.0.0.1:5000${child.profile_picture}" alt="Student Photo" style="width:120px;height:120px;border-radius:50%;object-fit:cover;">`;
+      return `<img src="${child.profile_picture}" alt="Student Photo" style="width:120px;height:120px;border-radius:50%;object-fit:cover;">`;
     }
 
     return `<div style="width:120px;height:120px;border-radius:50%;background:#003b70;color:#ffcc00;display:flex;align-items:center;justify-content:center;font-weight:bold;">Student Photo</div>`;
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function loadMyContactProfile() {
-    const response = await fetch("http://127.0.0.1:5000/api/parents/my/profile", {
+    const response = await fetch("/api/parents/my/profile", {
       headers: getAuthOnlyHeaders()
     });
 
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setContactMessage("Updating contact...", false);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/parents/my/profile", {
+      const response = await fetch("/api/parents/my/profile", {
         method: "PUT",
         headers: {
           ...getAuthOnlyHeaders(),
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!childrenProfileBox) return;
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/parents/my/children", {
+      const response = await fetch("/api/parents/my/children", {
         headers: getAuthOnlyHeaders()
       });
 

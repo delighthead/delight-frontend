@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
   try {
-    const response = await fetch("http://127.0.0.1:5000/api/settings");
+    const response = await fetch("/api/settings");
     const data = await response.json();
 
     if (!response.ok) return;

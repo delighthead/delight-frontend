@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const API = "http://127.0.0.1:5000";
+  const API = "";
 
   const branchSelect = document.getElementById("class_fee_branch_id");
   const classSelect = document.getElementById("class_fee_class_id");

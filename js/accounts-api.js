@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function updateAccountStatus(id, status) {
-    const response = await fetch(`http://127.0.0.1:5000/api/accounts/${id}/status`, {
+    const response = await fetch(`/api/accounts/${id}/status`, {
       method: "PATCH",
       headers: getAuthHeaders(),
       body: JSON.stringify({ status })
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!accountTableBody) return;
 
     try {
-      let url = "http://127.0.0.1:5000/api/accounts";
+      let url = "/api/accounts";
 
       if (isBranchAdmin()) {
         url += `?branch_id=${getAdminBranchId()}`;

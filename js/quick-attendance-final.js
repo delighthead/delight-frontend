@@ -45,7 +45,7 @@
     try {
       f.box.innerHTML = "<p>Loading students...</p>";
 
-      const res = await fetch(`http://127.0.0.1:5000/api/students?branch_id=${f.branch.value}`, {
+      const res = await fetch(`/api/students?branch_id=${f.branch.value}`, {
         headers: authHeaders()
       });
 
@@ -157,7 +157,7 @@
         f.saveBtn.textContent = "Saving...";
       }
 
-      const res = await fetch("http://127.0.0.1:5000/api/attendance/bulk", {
+      const res = await fetch("/api/attendance/bulk", {
         method: "POST",
         headers: jsonHeaders(),
         body: JSON.stringify({ records })

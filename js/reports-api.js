@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/branches", {
+      const response = await fetch("/api/branches", {
         headers: getAuthOnlyHeaders()
       });
 
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!classSelect) return;
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/classes", {
+      const response = await fetch("/api/classes", {
         headers: getAuthOnlyHeaders()
       });
 
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!reportTableBody) return;
 
     try {
-      let reportsUrl = "http://127.0.0.1:5000/api/reports";
+      let reportsUrl = "/api/reports";
 
       if (isAdmin()) {
         reportsUrl += `?branch_id=${getAdminId()}`;
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/reports", {
+      const response = await fetch("/api/reports", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -205,11 +205,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const gradingSettings = await getGradingSettings();
 
-    const settingsResponse = await fetch("http://127.0.0.1:5000/api/settings");
+    const settingsResponse = await fetch("/api/settings");
     const settingsData = await settingsResponse.json();
     const settings = settingsData.settings || {};
 
-    let scoresUrl = "http://127.0.0.1:5000/api/scores";
+    let scoresUrl = "/api/scores";
     if (branchId) {
       scoresUrl += `?branch_id=${branchId}`;
     }
@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
 
     try {
-      let attendanceUrl = "http://127.0.0.1:5000/api/attendance";
+      let attendanceUrl = "/api/attendance";
 
       if (branchId) {
         attendanceUrl += `?branch_id=${branchId}`;
@@ -343,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const logo = settings.school_logo
-      ? `<img src="http://127.0.0.1:5000${settings.school_logo}" style="width:80px;height:80px;object-fit:contain;">`
+      ? `<img src="${settings.school_logo}" style="width:80px;height:80px;object-fit:contain;">`
       : "";
 
     const printWindow = window.open("", "_blank");

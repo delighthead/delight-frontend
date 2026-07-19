@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
       throw new Error("This page is for parents only.");
     }
 
-    const response = await fetch(`http://127.0.0.1:5000/api/parents/by-user/${user.id}`);
+    const response = await fetch(`/api/parents/by-user/${user.id}`);
     const data = await response.json();
 
     if (!response.ok) {
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       const parent = await getLoggedInParent();
 
-      const response = await fetch(`http://127.0.0.1:5000/api/parents/${parent.id}/children`);
+      const response = await fetch(`/api/parents/${parent.id}/children`);
       const data = await response.json();
 
       if (!response.ok) {

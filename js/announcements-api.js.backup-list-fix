@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/branches", {
+      const response = await fetch("/api/branches", {
         headers: getAuthOnlyHeaders()
       });
 
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!announcementTableBody) return;
 
     try {
-      let url = "http://127.0.0.1:5000/api/announcements";
+      let url = "/api/announcements";
 
       if (isAdmin()) {
         url += `?branch_id=${getAdminBranchId()}`;
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       try {
-        const response = await fetch("http://127.0.0.1:5000/api/announcements", {
+        const response = await fetch("/api/announcements", {
           method: "POST",
           headers: getAuthHeaders(),
           body: JSON.stringify(announcementData)
@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!confirmDelete) return;
 
       try {
-        const response = await fetch(`http://127.0.0.1:5000/api/announcements/${deleteBtn.dataset.id}`, {
+        const response = await fetch(`/api/announcements/${deleteBtn.dataset.id}`, {
           method: "DELETE",
           headers: getAuthOnlyHeaders()
         });

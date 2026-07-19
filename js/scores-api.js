@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!branchSelect) return;
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/branches", { headers: getAuthOnlyHeaders() });
+      const response = await fetch("/api/branches", { headers: getAuthOnlyHeaders() });
       const data = await response.json();
 
       branchSelect.innerHTML = '<option value="">Select branch</option>';
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!studentSelect) return;
 
     try {
-      let studentsUrl = "http://127.0.0.1:5000/api/students";
+      let studentsUrl = "/api/students";
       const selectedBranch = isBranchAdmin() ? getAdminBranchId() : branchSelect.value;
 
       if (selectedBranch) {
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!scoreTableBody) return;
 
     try {
-      let scoresUrl = "http://127.0.0.1:5000/api/scores";
+      let scoresUrl = "/api/scores";
 
       if (isBranchAdmin()) {
         scoresUrl += `?branch_id=${getAdminBranchId()}`;
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       try {
-        const response = await fetch("http://127.0.0.1:5000/api/scores", {
+        const response = await fetch("/api/scores", {
           method: "POST",
           headers: getAuthHeaders(),
           body: JSON.stringify(scoreData)
@@ -223,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!dropdown) return;
 
       try {
-        const response = await fetch(`http://127.0.0.1:5000/api/scores/${dropdown.dataset.id}/approval`, {
+        const response = await fetch(`/api/scores/${dropdown.dataset.id}/approval`, {
           method: "PATCH",
           headers: getAuthHeaders(),
           body: JSON.stringify({
@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function loadAdminExcelSettings() {
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/settings");
+      const res = await fetch("/api/settings");
       const data = await res.json();
       const settings = data.settings || {};
 
@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!branchSelect) return;
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/branches", {
+      const res = await fetch("/api/branches", {
         headers: getHeaders()
       });
 
@@ -320,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!classSelect) return;
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/classes", {
+      const res = await fetch("/api/classes", {
         headers: getHeaders()
       });
 
@@ -356,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     try {
-      const res = await fetch(`http://127.0.0.1:5000/api/scores/excel/template?${params.toString()}`, {
+      const res = await fetch(`/api/scores/excel/template?${params.toString()}`, {
         headers: getHeaders()
       });
 
@@ -407,7 +407,7 @@ document.addEventListener("DOMContentLoaded", function () {
     uploadBtn.textContent = "Uploading...";
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/scores/excel/upload", {
+      const res = await fetch("/api/scores/excel/upload", {
         method: "POST",
         headers: getHeaders(),
         body: formData
@@ -467,7 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function loadApprovalSettings() {
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/settings");
+      const res = await fetch("/api/settings");
       const data = await res.json();
       const settings = data.settings || {};
 
@@ -482,7 +482,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!bulk) return;
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/branches", {
+      const res = await fetch("/api/branches", {
         headers: { Authorization: `Bearer ${getToken()}` }
       });
 
@@ -506,7 +506,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!bulkClass) return;
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/classes", {
+      const res = await fetch("/api/classes", {
         headers: { Authorization: `Bearer ${getToken()}` }
       });
 
@@ -556,7 +556,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!confirm(confirmText)) return;
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/scores/bulk/approval", {
+      const res = await fetch("/api/scores/bulk/approval", {
         method: "PATCH",
         headers: authHeaders(),
         body: JSON.stringify({
@@ -626,7 +626,7 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.textContent = "Processing...";
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/scores/bulk/approval", {
+      const response = await fetch("/api/scores/bulk/approval", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

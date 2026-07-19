@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function fetchPayments(feeId) {
-    const res = await fetch(`http://127.0.0.1:5000/api/fees/${feeId}/payments`, {
+    const res = await fetch(`/api/fees/${feeId}/payments`, {
       headers: {
         Authorization: `Bearer ${getToken()}`
       }
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const note = prompt("Payment note optional:", "");
 
     try {
-      const res = await fetch(`http://127.0.0.1:5000/api/fees/${fee.id}/payments`, {
+      const res = await fetch(`/api/fees/${fee.id}/payments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function printFullReceipt(fee) {
     try {
-      const settingsResponse = await fetch("http://127.0.0.1:5000/api/settings");
+      const settingsResponse = await fetch("/api/settings");
       const settingsData = await settingsResponse.json();
       const settings = settingsData.settings || {};
 
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const balance = Number(fee.amount_payable || 0) - totalPaid;
 
       const logo = settings.school_logo
-        ? `<img src="http://127.0.0.1:5000${settings.school_logo}" style="width:70px;height:70px;object-fit:contain;">`
+        ? `<img src="${settings.school_logo}" style="width:70px;height:70px;object-fit:contain;">`
         : "";
 
       let paymentRows = "";

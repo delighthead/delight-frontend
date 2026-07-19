@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!reportsTableBody) return;
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/parents/my/reports", {
+      const response = await fetch("/api/parents/my/reports", {
         headers: getAuthOnlyHeaders()
       });
 
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       reports.forEach(function (report) {
         const actions = report.file_path
-          ? `<a class="small-btn success" href="http://127.0.0.1:5000${report.file_path}" target="_blank">Open</a>
+          ? `<a class="small-btn success" href="${report.file_path}" target="_blank">Open</a>
              <button type="button" class="small-btn success parent-print-report-btn">Print</button>`
           : `<button type="button" class="small-btn success parent-print-report-btn">Print</button>`;
 

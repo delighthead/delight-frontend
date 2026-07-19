@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function getApiBase() {
     const host = window.location.hostname;
     if (host === "localhost" || host === "127.0.0.1") {
-      return "http://127.0.0.1:5000";
+      return "";
     }
     return "";
   }

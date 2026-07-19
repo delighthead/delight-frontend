@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!branchSelect) return;
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/branches", {
+      const response = await fetch("/api/branches", {
         headers: getAuthOnlyHeaders()
       });
 
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!parentTableBody) return;
 
     try {
-      let url = "http://127.0.0.1:5000/api/parents";
+      let url = "/api/parents";
 
       if (isAdmin()) {
         url += `?branch_id=${getAdminBranchId()}`;
@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (viewChildrenBtn) {
       try {
-        const response = await fetch(`http://127.0.0.1:5000/api/parents/${viewChildrenBtn.dataset.id}/children`, {
+        const response = await fetch(`/api/parents/${viewChildrenBtn.dataset.id}/children`, {
           headers: getAuthOnlyHeaders()
         });
 
@@ -219,8 +219,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         const url = editingParentId
-          ? `http://127.0.0.1:5000/api/parents/${editingParentId}`
-          : "http://127.0.0.1:5000/api/parents";
+          ? `/api/parents/${editingParentId}`
+          : "/api/parents";
 
         const response = await fetch(url, {
           method: editingParentId ? "PUT" : "POST",

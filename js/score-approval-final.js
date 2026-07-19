@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.textContent = "Processing...";
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/scores/bulk/approval", {
+      const response = await fetch("/api/scores/bulk/approval", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

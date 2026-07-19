@@ -46,7 +46,7 @@
     });
 
     try {
-      const response = await fetch(`http://127.0.0.1:5000/api/scores/excel/template?${params.toString()}`, {
+      const response = await fetch(`/api/scores/excel/template?${params.toString()}`, {
         headers: authHeaders()
       });
 
@@ -101,7 +101,7 @@
     formData.append("score_file", f.file.files[0]);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/scores/excel/upload", {
+      const response = await fetch("/api/scores/excel/upload", {
         method: "POST",
         headers: authHeaders(),
         body: formData

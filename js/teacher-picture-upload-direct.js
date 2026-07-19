@@ -14,7 +14,7 @@
   function fullUrl(path) {
     if (!path) return "";
     if (path.startsWith("http")) return path;
-    return "http://127.0.0.1:5000" + path + "?v=" + Date.now();
+    return "" + path + "?v=" + Date.now();
   }
 
   async function getTeacherId() {
@@ -24,7 +24,7 @@
     const u = user();
     if (!u.id) return "";
 
-    const res = await fetch(`http://127.0.0.1:5000/api/teachers/by-user/${u.id}`, {
+    const res = await fetch(`/api/teachers/by-user/${u.id}`, {
       headers: { Authorization: `Bearer ${token()}` }
     });
 
@@ -43,7 +43,7 @@
     const u = user();
     if (!u.id) return;
 
-    const res = await fetch(`http://127.0.0.1:5000/api/teachers/by-user/${u.id}`, {
+    const res = await fetch(`/api/teachers/by-user/${u.id}`, {
       headers: { Authorization: `Bearer ${token()}` }
     });
 
@@ -85,7 +85,7 @@
     }
 
     try {
-      const res = await fetch(`http://127.0.0.1:5000/api/teachers/${teacherId}/profile`, {
+      const res = await fetch(`/api/teachers/${teacherId}/profile`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token()}`

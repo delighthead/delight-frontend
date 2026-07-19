@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!branchSelect) return;
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/branches", { headers: getAuthOnlyHeaders() });
+      const response = await fetch("/api/branches", { headers: getAuthOnlyHeaders() });
       const data = await response.json();
 
       branchSelect.innerHTML = '<option value=""></option>';
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!studentSelect) return;
 
     try {
-      let studentsUrl = "http://127.0.0.1:5000/api/students";
+      let studentsUrl = "/api/students";
 
       const selected = isAdmin() ? getAdminId() : branchSelect.value;
 
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!feeTableBody) return;
 
     try {
-      let feesUrl = "http://127.0.0.1:5000/api/fees";
+      let feesUrl = "/api/fees";
 
       if (isAdmin()) {
         feesUrl += `?branch_id=${getAdminBranchId()}`;
@@ -231,12 +231,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function printFeeReceipt(fee) {
     try {
-      const settingsResponse = await fetch("http://127.0.0.1:5000/api/settings");
+      const settingsResponse = await fetch("/api/settings");
       const settingsData = await settingsResponse.json();
       const settings = settingsData.settings || {};
 
       const logo = settings.school_logo
-        ? `<img src="http://127.0.0.1:5000${settings.school_logo}" style="width:70px;height:70px;object-fit:contain;">`
+        ? `<img src="${settings.school_logo}" style="width:70px;height:70px;object-fit:contain;">`
         : "";
 
       const receiptNo = `FEE-${fee.id || Date.now()}`;
@@ -422,8 +422,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         const feeUrl = editingFeeId
-          ? `http://127.0.0.1:5000/api/fees/${editingFeeId}`
-          : "http://127.0.0.1:5000/api/fees";
+          ? `/api/fees/${editingFeeId}`
+          : "/api/fees";
 
         const response = await fetch(feeUrl, {
           method: editingFeeId ? "PUT" : "POST",

@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!parentChildBox) return;
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/parents/my/children", {
+      const response = await fetch("/api/parents/my/children", {
         headers: getAuthOnlyHeaders()
       });
 
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       children.forEach(function (child) {
         const photoUrl = child.profile_picture
-          ? `http://127.0.0.1:5000${child.profile_picture}`
+          ? `${child.profile_picture}`
           : "";
 
         const card = document.createElement("div");

@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       teacherSelect.innerHTML = '<option value="">Loading teachers...</option>';
 
-      let url = "http://127.0.0.1:5000/api/teachers";
+      let url = "/api/teachers";
 
       if (branchSelect && branchSelect.value) {
         url += `?branch_id=${branchSelect.value}`;

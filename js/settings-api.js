@@ -32,13 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     currentLogoBox.innerHTML = `
-      <img src="http://127.0.0.1:5000${logoPath}" alt="School Logo" style="width:90px;height:90px;object-fit:contain;border:1px solid #ccc;padding:5px;border-radius:8px;background:white;">
+      <img src="${logoPath}" alt="School Logo" style="width:90px;height:90px;object-fit:contain;border:1px solid #ccc;padding:5px;border-radius:8px;background:white;">
     `;
   }
 
   async function loadSettings() {
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/settings", {
+      const response = await fetch("/api/settings", {
         headers: getAuthOnlyHeaders()
       });
 
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function saveSettings(payload, successMessage) {
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/settings", {
+      const response = await fetch("/api/settings", {
         method: "PUT",
         headers: getAuthHeaders(),
         body: JSON.stringify(payload)
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const formData = new FormData();
     formData.append("school_logo", logoInput.files[0]);
 
-    const response = await fetch("http://127.0.0.1:5000/api/settings/logo", {
+    const response = await fetch("/api/settings/logo", {
       method: "POST",
       headers: getAuthOnlyHeaders(),
       body: formData
@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (backupStatusText) backupStatusText.textContent = "Please wait, backup is running...";
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/settings/backup", {
+      const response = await fetch("/api/settings/backup", {
         method: "POST",
         headers: {
           "Authorization": token ? `Bearer ${token}` : ""
@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <br>
           File: ${data.file}
           <br>
-          <a href="http://127.0.0.1:5000${data.path}" download>Download Backup</a>
+          <a href="${data.path}" download>Download Backup</a>
         `;
       }
 
@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (restoreStatusText) restoreStatusText.textContent = "Please wait, database restore is running...";
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/settings/restore", {
+      const response = await fetch("/api/settings/restore", {
         method: "POST",
         headers: {
           "Authorization": token ? `Bearer ${token}` : ""

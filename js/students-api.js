@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       branchSelect.innerHTML = '<option value="">Loading branches...</option>';
 
-      const response = await fetch("http://127.0.0.1:5000/api/branches", {
+      const response = await fetch("/api/branches", {
         headers: getAuthOnlyHeaders()
       });
 
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!studentTableBody) return;
 
     try {
-      let url = "http://127.0.0.1:5000/api/students";
+      let url = "/api/students";
 
       if (isAdmin()) {
         url += `?branch_id=${getAdminId()}`;
@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/classes", {
+      const response = await fetch("/api/classes", {
         headers: getAuthOnlyHeaders()
       });
 
@@ -331,8 +331,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         const url = editingStudentId
-          ? `http://127.0.0.1:5000/api/students/${editingStudentId}`
-          : "http://127.0.0.1:5000/api/students";
+          ? `/api/students/${editingStudentId}`
+          : "/api/students";
 
         const response = await fetch(url, {
           method: editingStudentId ? "PUT" : "POST",
@@ -384,7 +384,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://127.0.0.1:5000/api/branches", {
+      const response = await fetch("/api/branches", {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
 
@@ -432,12 +432,12 @@ window.printStudentProfileFromButton = async function (button) {
   try {
     const student = JSON.parse(decodeURIComponent(button.dataset.student));
 
-    const settingsResponse = await fetch("http://127.0.0.1:5000/api/settings");
+    const settingsResponse = await fetch("/api/settings");
     const settingsData = await settingsResponse.json();
     const settings = settingsData.settings || {};
 
     const logo = settings.school_logo
-      ? `<img src="http://127.0.0.1:5000${settings.school_logo}" style="width:75px;height:75px;object-fit:contain;">`
+      ? `<img src="${settings.school_logo}" style="width:75px;height:75px;object-fit:contain;">`
       : "";
 
     const win = window.open("", "_blank");

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const API = "http://127.0.0.1:5000";
+  const API = "";
   const form = document.getElementById("teacherAssignForm");
 
   if (!form) return;

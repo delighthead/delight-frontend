@@ -88,7 +88,7 @@
     try {
       showScoreMessage("Loading scores...");
 
-      const response = await fetch(`http://127.0.0.1:5000/api/scores?${params.toString()}`, {
+      const response = await fetch(`/api/scores?${params.toString()}`, {
         headers: authHeaders()
       });
 
@@ -156,7 +156,7 @@
 
   async function updateApproval(select) {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/api/scores/${select.dataset.id}/approval`, {
+      const response = await fetch(`/api/scores/${select.dataset.id}/approval`, {
         method: "PATCH",
         headers: jsonHeaders(),
         body: JSON.stringify({

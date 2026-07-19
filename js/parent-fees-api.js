@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!feesTableBody) return;
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/parents/my/fees", {
+      const response = await fetch("/api/parents/my/fees", {
         headers: getAuthOnlyHeaders()
       });
 

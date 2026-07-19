@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      const response = await fetch(`http://127.0.0.1:5000/api/teachers/by-user/${user.id}`);
+      const response = await fetch(`/api/teachers/by-user/${user.id}`);
       const data = await response.json();
 
       if (!response.ok) {
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
       loggedInTeacher = data.teacher;
 
       const imageUrl = loggedInTeacher.profile_picture
-        ? `http://127.0.0.1:5000${loggedInTeacher.profile_picture}`
+        ? `${loggedInTeacher.profile_picture}`
         : "";
 
       if (photoBox) {
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       try {
-        const response = await fetch(`http://127.0.0.1:5000/api/teachers/${loggedInTeacher.id}/profile`, {
+        const response = await fetch(`/api/teachers/${loggedInTeacher.id}/profile`, {
           method: "PATCH",
           headers: getAuthOnlyHeaders(),
           body: formData

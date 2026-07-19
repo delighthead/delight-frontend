@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function loades() {
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/branches", {
+      const response = await fetch("/api/branches", {
         headers: getAuthOnlyHeaders()
       });
       const data = await response.json();
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       if (!assignClass) return;
 
-      let url = "http://127.0.0.1:5000/api/classes";
+      let url = "/api/classes";
       if (isAdmin()) {
         url += `?branch_id=${getAdminBranchId()}`;
       }
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!teacherTableBody) return;
 
     try {
-      let url = "http://127.0.0.1:5000/api/teachers";
+      let url = "/api/teachers";
       if (isAdmin()) {
         url += `?branch_id=${getAdminBranchId()}`;
       }
@@ -234,8 +234,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         const url = editingTeacherId
-          ? `http://127.0.0.1:5000/api/teachers/${editingTeacherId}`
-          : "http://127.0.0.1:5000/api/teachers";
+          ? `/api/teachers/${editingTeacherId}`
+          : "/api/teachers";
 
         const response = await fetch(url, {
           method: editingTeacherId ? "PUT" : "POST",
@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       try {
-        const response = await fetch("http://127.0.0.1:5000/api/teachers/assign", {
+        const response = await fetch("/api/teachers/assign", {
           method: "POST",
           headers: getAuthHeaders(),
           body: JSON.stringify(assignmentData)
