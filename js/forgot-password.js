@@ -3,6 +3,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const resetForm = document.getElementById("forgotResetForm");
   const messageBox = document.getElementById("forgotMessage");
 
+  function getApiBase() {
+    const host = window.location.hostname;
+    if (host === "localhost" || host === "127.0.0.1") {
+      return "http://127.0.0.1:5000";
+    }
+    return "";
+  }
+
+  const API_BASE = getApiBase();
+
   function showMessage(message, isError = false) {
     messageBox.textContent = message;
     messageBox.style.color = isError ? "red" : "green";
@@ -18,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/auth/forgot-password/verify", {
+      const response = await fetch(`${API_BASE}/api/auth/forgot-password/verify`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -53,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/auth/forgot-password/reset", {
+      const response = await fetch(`${API_BASE}/api/auth/forgot-password/reset`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

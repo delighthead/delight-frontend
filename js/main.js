@@ -1,6 +1,16 @@
 async function loginUser(event) {
   event.preventDefault();
 
+  function getApiBase() {
+    const host = window.location.hostname;
+    if (host === "localhost" || host === "127.0.0.1") {
+      return "http://127.0.0.1:5000";
+    }
+    return "";
+  }
+
+  const API_BASE = getApiBase();
+
   const roleSelect = document.getElementById("role");
   const usernameInput = document.getElementById("username");
   const passwordInput = document.getElementById("password");
@@ -22,7 +32,7 @@ async function loginUser(event) {
   }
 
   try {
-    const response = await fetch("http://127.0.0.1:5000/api/auth/login", {
+    const response = await fetch(`${API_BASE}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

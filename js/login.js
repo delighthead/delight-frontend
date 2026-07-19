@@ -2,6 +2,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("loginForm");
   const loginMessage = document.getElementById("loginMessage");
 
+  function getApiBase() {
+    const host = window.location.hostname;
+    if (host === "localhost" || host === "127.0.0.1") {
+      return "http://127.0.0.1:5000";
+    }
+    return "";
+  }
+
+  const API_BASE = getApiBase();
+
   function showMessage(message, isError = false) {
     if (!loginMessage) return;
     loginMessage.textContent = message;
@@ -30,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     clearOldLoginData();
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/auth/login", {
+      const response = await fetch(`${API_BASE}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
