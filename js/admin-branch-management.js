@@ -46,6 +46,35 @@ document.addEventListener("DOMContentLoaded", function () {
     messageEl.style.color = isError ? "#b42318" : "#067647";
   }
 
+  async function fetchJsonWithRetry(url, options, retries) {
+    let lastError = null;
+
+    for (let i = 0; i <= retries; i += 1) {
+      try {
+        const response = await fetch(url, options);
+        const raw = await response.text();
+        let data = {};
+
+        try {
+          data = raw ? JSON.parse(raw) : {};
+        } catch (parseError) {
+          data = { message: raw || "Unexpected server response" };
+        }
+
+        return { response, data };
+      } catch (error) {
+        lastError = error;
+        if (i < retries) {
+          await new Promise(function (resolve) {
+            setTimeout(resolve, 350);
+          });
+        }
+      }
+    }
+
+    throw lastError || new Error("Network request failed");
+  }
+
   function renderBranches(branches) {
     if (!listBody) return;
 
@@ -111,11 +140,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function loadBranches() {
     try {
-      const response = await fetch(`${API_BASE}/api/branches?include_inactive=true`, {
+      const { response, data } = await fetchJsonWithRetry(`${API_BASE}/api/branches?include_inactive=true`, {
         headers: getAuthOnlyHeaders()
-      });
-
-      const data = await response.json();
+      }, 2);
 
       if (!response.ok) {
         renderBranches([]);
@@ -160,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
     createBtn.textContent = isEditMode ? "Updating..." : "Creating...";
 
     try {
-      const response = await fetch(
+      const { response, data } = await fetchJsonWithRetry(
         isEditMode
           ? `${API_BASE}/api/branches/${branchId}`
           : `${API_BASE}/api/branches`,
@@ -168,10 +195,9 @@ document.addEventListener("DOMContentLoaded", function () {
         method: isEditMode ? "PUT" : "POST",
         headers: getAuthHeaders(),
         body: JSON.stringify(payload)
-      }
+      },
+      1
       );
-
-      const data = await response.json();
 
       if (!response.ok) {
         setMessage(data.message || "Failed to create branch", true);
@@ -199,11 +225,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!id) return;
 
       try {
-        const response = await fetch(`${API_BASE}/api/branches?include_inactive=true`, {
+        const { response, data } = await fetchJsonWithRetry(`${API_BASE}/api/branches?include_inactive=true`, {
           headers: getAuthOnlyHeaders()
-        });
-
-        const data = await response.json();
+        }, 1);
         if (!response.ok) {
           setMessage(data.message || "Could not load branch details", true);
           return;
