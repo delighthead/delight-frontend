@@ -2621,4 +2621,100 @@ button,
   background: #912018;
 }
 
+/* Stable header layout for public/login pages */
+.public-header {
+  display: block !important;
+  padding: 20px 0 !important;
+}
+
+.public-header .header-container {
+  width: min(1100px, 92%) !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.public-header .header-container nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Mobile fix for public header and login layout */
+@media (max-width: 768px) {
+  .public-header .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .public-header .header-container nav {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 12px;
+    align-items: center;
+  }
+
+  .public-header .header-container nav a {
+    display: inline-block;
+    padding: 8px 10px;
+  }
+
+  .public-header .header-container .login-btn {
+    padding: 10px 12px;
+  }
+
+  .login-section {
+    padding: 24px 14px;
+  }
+
+  .login-box {
+    max-width: 100%;
+    padding: 20px 16px;
+  }
+}
+
+/* Mobile dashboard hardening */
+@media (max-width: 900px) {
+  .dashboard-layout {
+    display: block !important;
+  }
+
+  .sidebar {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .dashboard-main {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+  }
+
+  .dashboard-main .data-table {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .dashboard-main .table-responsive {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+  }
+
+  #parentChildBox,
+  #parentChildBox > .dashboard-card,
+  #parentChildBox .dashboard-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 100% !important;
+  }
+}
+
 
