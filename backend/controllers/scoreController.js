@@ -295,7 +295,7 @@ exports.createScore = async (req, res) => {
       approval_status
     } = req.body;
 
-    if (req.user && req.user.role === "branch_admin") {
+    if (req.user && (req.user.role === "branch_admin" || req.user.role === "teacher_admin")) {
       branch_id = req.user.branch_id;
     }
 
@@ -438,7 +438,7 @@ exports.updateScore = async (req, res) => {
 
     const existing = scoreRows[0];
 
-    if (req.user && req.user.role === "branch_admin") {
+    if (req.user && (req.user.role === "branch_admin" || req.user.role === "teacher_admin")) {
       branch_id = req.user.branch_id;
     }
 
@@ -612,7 +612,10 @@ exports.downloadScoreTemplate = async (req, res) => {
       academic_year
     } = req.query;
 
-    if (req.user && (req.user.role === "branch_admin" || req.user.role === "admin")) {
+    if (
+      req.user &&
+      (req.user.role === "branch_admin" || req.user.role === "teacher_admin" || req.user.role === "admin")
+    ) {
       branch_id = req.user.branch_id;
     }
 
@@ -732,7 +735,7 @@ exports.uploadScoreExcel = async (req, res) => {
       academic_year
     } = req.body;
 
-    if (req.user && req.user.role === "branch_admin") {
+    if (req.user && (req.user.role === "branch_admin" || req.user.role === "teacher_admin")) {
       branch_id = req.user.branch_id;
     }
 

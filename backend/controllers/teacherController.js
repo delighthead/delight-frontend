@@ -129,7 +129,7 @@ exports.getTeachers = async (req, res) => {
     let { branch_id } = req.query;
 
     // Branch admin must only see teachers in their own branch
-    if (req.user && req.user.role === "branch_admin") {
+    if (req.user && (req.user.role === "branch_admin" || req.user.role === "teacher_admin")) {
       branch_id = req.user.branch_id;
     }
 
@@ -453,7 +453,10 @@ exports.updateTeacher = async (req, res) => {
 
     const teacher = teachers[0];
 
-    if (req.user.role === "branch_admin" && Number(teacher.branch_id) !== Number(req.user.branch_id)) {
+    if (
+      (req.user.role === "branch_admin" || req.user.role === "teacher_admin") &&
+      Number(teacher.branch_id) !== Number(req.user.branch_id)
+    ) {
       return res.status(403).json({
         message: "You can only edit teachers in your own branch"
       });

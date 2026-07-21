@@ -890,7 +890,10 @@ exports.updateParent = async (req, res) => {
 
     const parent = parents[0];
 
-    if (req.user.role === "branch_admin" && Number(parent.branch_id) !== Number(req.user.branch_id)) {
+    if (
+      (req.user.role === "branch_admin" || req.user.role === "teacher_admin") &&
+      Number(parent.branch_id) !== Number(req.user.branch_id)
+    ) {
       return res.status(403).json({
         message: "You can only edit parents in your own branch"
       });

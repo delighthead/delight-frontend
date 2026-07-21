@@ -9,7 +9,7 @@ exports.promoteStudents = async (req, res) => {
     const selectedStudentIds = Array.isArray(student_ids) ? student_ids : [];
 
     // Branch admin must only promote students in their own branch
-    if (req.user && req.user.role === "branch_admin") {
+    if (req.user && (req.user.role === "branch_admin" || req.user.role === "teacher_admin")) {
       branch_id = req.user.branch_id;
     }
     const promotedBy = req.user ? req.user.id : null;
@@ -164,7 +164,7 @@ exports.getPromotionHistory = async (req, res) => {
 
     const params = [];
 
-    if (req.user && req.user.role === "branch_admin") {
+    if (req.user && (req.user.role === "branch_admin" || req.user.role === "teacher_admin")) {
       sql += " WHERE ph.branch_id = ?";
       params.push(req.user.branch_id);
     }

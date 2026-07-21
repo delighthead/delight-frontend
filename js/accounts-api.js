@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function isBranchAdmin() {
     const user = getLoggedInUser();
-    return user && user.role === "branch_admin";
+    const role = String(user && user.role ? user.role : "").toLowerCase();
+    return role === "branch_admin" || role === "teacher_admin";
   }
 
   function getAdminBranchId() {
@@ -38,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function formatRole(role) {
     if (role === "super_admin") return "Super Admin";
     if (role === "branch_admin") return "Branch Admin";
+    if (role === "teacher_admin") return "Teacher Admin";
     if (role === "teacher") return "Teacher";
     if (role === "parent") return "Parent";
     return role || "";
@@ -66,10 +68,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function buildActionButtons(account) {
+    if (!canManageLoginStatus(account.role)) {
+      return `<small>Not available</small>`;
+    }
+
     const buttons = [
-      { key: "active", label: "Activate" },
-      { key: "locked", label: "Lock" },
-      { key: "disabled", label: "Disable" }
+      { key: "active", label: "Activate", className: "success" },
+      { key: "locked", label: "Lock", className: "warning" },
+      { key: "disabled", label: "Disable", className: "danger-btn" }
     ];
 
     return buttons
@@ -78,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return `
           <button
             type="button"
-            class="small-btn account-status-btn"
+            class="small-btn account-status-btn ${item.className}"
             data-id="${account.id}"
             data-status="${item.key}"
             ${isCurrent ? "disabled" : ""}

@@ -116,7 +116,7 @@ exports.updateActivity = async (req, res) => {
 
     if (
       req.user &&
-      req.user.role === "branch_admin" &&
+      (req.user.role === "branch_admin" || req.user.role === "teacher_admin") &&
       Number(existing.branch_id) !== Number(req.user.branch_id)
     ) {
       return res.status(403).json({
@@ -142,7 +142,12 @@ exports.updateActivity = async (req, res) => {
       values.push(description);
     }
 
-    if (branch_id !== undefined && req.user && req.user.role !== "branch_admin") {
+    if (
+      branch_id !== undefined &&
+      req.user &&
+      req.user.role !== "branch_admin" &&
+      req.user.role !== "teacher_admin"
+    ) {
       fields.push("branch_id = ?");
       values.push(branch_id || null);
     }

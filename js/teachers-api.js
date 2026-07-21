@@ -25,6 +25,18 @@ document.addEventListener("DOMContentLoaded", function () {
     return localStorage.getItem("token") || "";
   }
 
+  function getRole() {
+    return String(getUser().role || "").toLowerCase();
+  }
+
+  function isSuperAdmin() {
+    return getRole() === "super_admin";
+  }
+
+  function canManageTeachers() {
+    return ["super_admin", "admin", "branch_admin", "teacher_admin"].includes(getRole());
+  }
+
   function authHeaders(json = false) {
     const headers = {};
     if (json) headers["Content-Type"] = "application/json";
@@ -33,7 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function isBranchAdmin() {
-    return String(getUser().role || "").toLowerCase() === "branch_admin";
+    const role = getRole();
+    return role === "branch_admin" || role === "teacher_admin";
   }
 
   function getBranchId() {
@@ -193,6 +206,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
       teachers.forEach(teacher => {
         const row = document.createElement("tr");
+        const actionButtons = [];
+
+        actionButtons.push(`
+          <button type="button" class="small-btn success edit-teacher-btn"
+            data-id="${teacher.id || ""}"
+            data-record="${encodeURIComponent(JSON.stringify(teacher))}">
+            Edit
+          </button>
+        `);
+
+        if (canManageTeachers()) {
+          actionButtons.push(`
+            <button type="button" class="small-btn danger-btn disable-teacher-btn"
+              data-id="${teacher.id || ""}">
+              Disable
+            </button>
+          `);
+        }
+
+        if (isSuperAdmin()) {
+          actionButtons.push(`
+            <button type="button" class="small-btn warning make-teacher-admin-btn"
+              data-id="${teacher.id || ""}">
+              Make Admin
+            </button>
+          `);
+        }
 
         row.innerHTML = `
           <td>${teacher.branch_name || teacher.branch || ""}</td>
@@ -204,12 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <td>${teacher.assigned_classes || ""}</td>
           <td>${teacher.assigned_subjects || ""}</td>
           <td>${teacher.status || ""}</td>
-          <td>
-            <button type="button" class="small-btn edit-teacher-btn"
-              data-record="${encodeURIComponent(JSON.stringify(teacher))}">
-              Edit
-            </button>
-          </td>
+          <td>${actionButtons.join(" ")}</td>
         `;
 
         teacherTableBody.appendChild(row);

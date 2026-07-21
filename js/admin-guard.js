@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     user = null;
   }
 
-  const allowedRoles = ["admin", "branch_admin", "super_admin"];
+  const allowedRoles = ["admin", "branch_admin", "super_admin", "teacher_admin"];
 
   if (!token || !user || !allowedRoles.includes(user.role)) {
     localStorage.clear();

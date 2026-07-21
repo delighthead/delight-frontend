@@ -72,7 +72,10 @@ exports.updateAccountStatus = async (req, res) => {
 
     const account = accounts[0];
 
-    if (req.user.role === "branch_admin" && Number(account.branch_id) !== Number(req.user.branch_id)) {
+    if (
+      (req.user.role === "branch_admin" || req.user.role === "teacher_admin") &&
+      Number(account.branch_id) !== Number(req.user.branch_id)
+    ) {
       return res.status(403).json({
         message: "You can only manage accounts in your own branch"
       });

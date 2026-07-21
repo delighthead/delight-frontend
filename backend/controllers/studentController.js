@@ -375,7 +375,11 @@ exports.updateStudent = async (req, res) => {
 
     const student = students[0];
 
-    if (req.user && req.user.role === "branch_admin" && Number(student.branch_id) !== Number(req.user.branch_id)) {
+    if (
+      req.user &&
+      (req.user.role === "branch_admin" || req.user.role === "teacher_admin") &&
+      Number(student.branch_id) !== Number(req.user.branch_id)
+    ) {
       return res.status(403).json({
         message: "You can only edit students in your own branch"
       });

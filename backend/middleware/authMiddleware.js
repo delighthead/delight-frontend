@@ -46,7 +46,7 @@ exports.applyBranchSecurity = (req, res, next) => {
     });
   }
 
-  if (req.user.role === "branch_admin") {
+  if (req.user.role === "branch_admin" || req.user.role === "teacher_admin") {
     req.query.branch_id = req.user.branch_id;
 
     if (!req.body) {
@@ -79,7 +79,7 @@ exports.applyUserBranchSecurity = (req, res, next) => {
     });
   }
 
-  if (req.user.role === "branch_admin" || req.user.role === "teacher") {
+  if (req.user.role === "branch_admin" || req.user.role === "teacher_admin" || req.user.role === "teacher") {
     req.query.branch_id = req.user.branch_id;
 
     if (!req.body) {
