@@ -434,6 +434,11 @@ exports.updateTeacher = async (req, res) => {
       status
     } = req.body;
 
+    const normalizedPhone = String(phone || "").trim();
+    const hashedPassword = normalizedPhone
+      ? await bcrypt.hash(normalizedPhone, 10)
+      : null;
+
     if (!branch_id || !teacher_id || !full_name || !ghana_card_number || !phone) {
       return res.status(400).json({
         message: "Branch, Teacher ID, full name, Ghana Card, and phone are required"
@@ -494,7 +499,8 @@ exports.updateTeacher = async (req, res) => {
              username = ?,
              phone = ?,
              email = ?,
-             status = ?
+             status = ?,
+             password = COALESCE(?, password)
          WHERE id = ?`,
         [
           branch_id,
@@ -503,6 +509,7 @@ exports.updateTeacher = async (req, res) => {
           phone,
           email || null,
           status || "active",
+          hashedPassword,
           teacher.user_id
         ]
       );
@@ -514,7 +521,8 @@ exports.updateTeacher = async (req, res) => {
              username = ?,
              phone = ?,
              email = ?,
-             status = ?
+             status = ?,
+             password = COALESCE(?, password)
          WHERE username = ?`,
         [
           branch_id,
@@ -523,6 +531,7 @@ exports.updateTeacher = async (req, res) => {
           phone,
           email || null,
           status || "active",
+          hashedPassword,
           teacher.ghana_card_number
         ]
       );

@@ -871,6 +871,11 @@ exports.updateParent = async (req, res) => {
       status
     } = req.body;
 
+    const normalizedPhone = String(phone || "").trim();
+    const hashedPassword = normalizedPhone
+      ? await bcrypt.hash(normalizedPhone, 10)
+      : null;
+
     if (!branch_id || !full_name || !ghana_card_number || !phone) {
       return res.status(400).json({
         message: "Branch, parent name, Ghana Card, and phone are required"
@@ -931,7 +936,8 @@ exports.updateParent = async (req, res) => {
              username = ?,
              phone = ?,
              email = ?,
-             status = ?
+             status = ?,
+             password = COALESCE(?, password)
          WHERE id = ?`,
         [
           branch_id,
@@ -940,6 +946,7 @@ exports.updateParent = async (req, res) => {
           phone,
           email || null,
           status || "active",
+          hashedPassword,
           parent.user_id
         ]
       );
@@ -951,7 +958,8 @@ exports.updateParent = async (req, res) => {
              username = ?,
              phone = ?,
              email = ?,
-             status = ?
+             status = ?,
+             password = COALESCE(?, password)
          WHERE username = ?`,
         [
           branch_id,
@@ -960,6 +968,7 @@ exports.updateParent = async (req, res) => {
           phone,
           email || null,
           status || "active",
+          hashedPassword,
           parent.ghana_card_number
         ]
       );

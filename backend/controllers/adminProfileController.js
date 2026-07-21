@@ -1,4 +1,5 @@
 const db = require("../config/database");
+const bcrypt = require("bcryptjs");
 
 function getLoggedInUserId(req) {
   return (
@@ -84,6 +85,10 @@ exports.updateMyProfile = async (req, res) => {
 
     const phone = req.body.phone || "";
     const email = req.body.email || "";
+    const normalizedPhone = String(phone).trim();
+    const hashedPassword = normalizedPhone
+      ? await bcrypt.hash(normalizedPhone, 10)
+      : null;
 
     let profilePicture = "";
 
@@ -91,12 +96,26 @@ exports.updateMyProfile = async (req, res) => {
       profilePicture = "/uploads/admins/" + req.file.filename;
     }
 
-    if (profilePicture) {
+    if (profilePicture && hashedPassword) {
+      await db.query(
+        `UPDATE users
+         SET phone = ?, email = ?, profile_picture = ?, password = ?
+         WHERE id = ?`,
+        [phone, email, profilePicture, hashedPassword, userId]
+      );
+    } else if (profilePicture) {
       await db.query(
         `UPDATE users
          SET phone = ?, email = ?, profile_picture = ?
          WHERE id = ?`,
         [phone, email, profilePicture, userId]
+      );
+    } else if (hashedPassword) {
+      await db.query(
+        `UPDATE users
+         SET phone = ?, email = ?, password = ?
+         WHERE id = ?`,
+        [phone, email, hashedPassword, userId]
       );
     } else {
       await db.query(
