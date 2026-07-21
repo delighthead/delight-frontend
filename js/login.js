@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("loginForm");
   const loginMessage = document.getElementById("loginMessage");
+  const forgotPasswordLink = document.getElementById("forgotPasswordLink");
 
   function getApiBases() {
     const host = window.location.hostname;
@@ -28,6 +29,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function clearOldLoginData() {
     localStorage.clear();
     sessionStorage.clear();
+  }
+
+  if (forgotPasswordLink) {
+    forgotPasswordLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      showMessage("Contact the school admin.", true);
+    });
   }
 
   if (!loginForm) return;
