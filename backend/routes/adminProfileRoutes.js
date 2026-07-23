@@ -9,7 +9,7 @@ const { verifyToken } = require("../middleware/authMiddleware");
 function allowAdminRoles(req, res, next) {
   const role = req.user && req.user.role;
 
-  if (["super_admin", "branch_admin", "admin"].includes(role)) {
+  if (["super_admin", "branch_admin", "admin", "teacher_admin"].includes(role)) {
     return next();
   }
 
