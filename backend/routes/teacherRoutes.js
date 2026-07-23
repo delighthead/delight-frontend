@@ -74,6 +74,7 @@ router.put(
   "/:id/disable",
   verifyToken,
   requireAdmin,
+  applyBranchSecurity,
   teacherController.disableTeacher
 );
 

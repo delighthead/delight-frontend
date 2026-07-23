@@ -1,5 +1,10 @@
 const db = require("../config/database");
 
+function isBranchScopedAdmin(user) {
+  if (!user) return false;
+  return user.role === "branch_admin" || user.role === "teacher_admin";
+}
+
 function toSafeNumber(value) {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : 0;
@@ -327,13 +332,19 @@ exports.createScore = async (req, res) => {
     }
 
     const [students] = await db.query(
-      "SELECT admission_number, class_id FROM students WHERE id = ? LIMIT 1",
+      "SELECT admission_number, class_id, branch_id FROM students WHERE id = ? LIMIT 1",
       [student_id]
     );
 
     if (students.length === 0) {
       return res.status(404).json({
         message: "Student not found"
+      });
+    }
+
+    if (Number(students[0].branch_id) !== Number(branch_id)) {
+      return res.status(400).json({
+        message: "Selected student does not belong to the provided branch"
       });
     }
 
@@ -438,7 +449,13 @@ exports.updateScore = async (req, res) => {
 
     const existing = scoreRows[0];
 
-    if (req.user && (req.user.role === "branch_admin" || req.user.role === "teacher_admin")) {
+    if (isBranchScopedAdmin(req.user) && Number(existing.branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only edit scores in your own branch"
+      });
+    }
+
+    if (isBranchScopedAdmin(req.user)) {
       branch_id = req.user.branch_id;
     }
 
@@ -557,6 +574,25 @@ exports.updateScoreApproval = async (req, res) => {
       });
     }
 
+    const [scoreRows] = await db.query(
+      "SELECT id, branch_id, student_id, subject FROM scores WHERE id = ? LIMIT 1",
+      [id]
+    );
+
+    if (scoreRows.length === 0) {
+      return res.status(404).json({
+        message: "Score not found"
+      });
+    }
+
+    const score = scoreRows[0];
+
+    if (isBranchScopedAdmin(req.user) && Number(score.branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only approve scores in your own branch"
+      });
+    }
+
     const [result] = await db.query(
       "UPDATE scores SET approval_status = ? WHERE id = ?",
       [approval_status, id]
@@ -568,22 +604,17 @@ exports.updateScoreApproval = async (req, res) => {
       });
     }
 
-    const [scoreRows] = await db.query(
-      "SELECT branch_id, student_id, subject FROM scores WHERE id = ? LIMIT 1",
-      [id]
-    );
-
-    if (scoreRows.length > 0) {
+    if (score) {
       await db.query(
         `INSERT INTO activity_logs
         (branch_id, user_id, action, module, description)
         VALUES (?, ?, ?, ?, ?)`,
         [
-          scoreRows[0].branch_id,
+          score.branch_id,
           req.user ? req.user.id : null,
           "Score Approval Changed",
           "Scores",
-          `Changed ${scoreRows[0].subject} score approval for student ID ${scoreRows[0].student_id} to ${approval_status}.`
+          `Changed ${score.subject} score approval for student ID ${score.student_id} to ${approval_status}.`
         ]
       );
     }

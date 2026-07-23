@@ -1,5 +1,10 @@
 const db = require("../config/database");
 
+function isBranchScopedAdmin(user) {
+  if (!user) return false;
+  return user.role === "branch_admin" || user.role === "teacher_admin";
+}
+
 function normalizeAttendanceStatus(status) {
   const value = String(status || "").trim().toLowerCase();
   if (value === "present" || value === "absent") {
@@ -168,7 +173,7 @@ exports.createAttendance = async (req, res) => {
     }
 
     const [students] = await db.query(
-      "SELECT class_id FROM students WHERE id = ? LIMIT 1",
+      "SELECT class_id, branch_id FROM students WHERE id = ? LIMIT 1",
       [student_id]
     );
 
@@ -179,6 +184,12 @@ exports.createAttendance = async (req, res) => {
     }
 
     const class_id = students[0].class_id;
+
+    if (isBranchScopedAdmin(req.user) && Number(students[0].branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only mark attendance for students in your own branch"
+      });
+    }
 
     const [result] = await db.query(
       `INSERT INTO attendance
@@ -252,6 +263,12 @@ exports.updateAttendance = async (req, res) => {
 
     const existing = existingRows[0];
 
+    if (isBranchScopedAdmin(req.user) && Number(existing.branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only update attendance in your own branch"
+      });
+    }
+
     if (req.user && req.user.role === "teacher") {
       const teacher = await getTeacherByUserId(req.user.id);
 
@@ -280,6 +297,24 @@ exports.updateAttendance = async (req, res) => {
     if (!normalizedStatus) {
       return res.status(400).json({
         message: "Attendance status must be Present or Absent"
+      });
+    }
+
+    const targetStudentId = student_id || existing.student_id;
+    const [studentRows] = await db.query(
+      "SELECT branch_id FROM students WHERE id = ? LIMIT 1",
+      [targetStudentId]
+    );
+
+    if (studentRows.length === 0) {
+      return res.status(404).json({
+        message: "Student not found"
+      });
+    }
+
+    if (isBranchScopedAdmin(req.user) && Number(studentRows[0].branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only update attendance for students in your own branch"
       });
     }
 

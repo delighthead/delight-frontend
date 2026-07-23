@@ -1,6 +1,22 @@
 const bcrypt = require("bcryptjs");
 const db = require("../config/database");
 
+function isBranchScopedAdmin(user) {
+  if (!user) return false;
+  return user.role === "branch_admin" || user.role === "teacher_admin";
+}
+
+async function getTeacherById(teacherId) {
+  if (!teacherId) return null;
+
+  const [rows] = await db.query(
+    "SELECT id, user_id, branch_id, full_name, ghana_card_number FROM teachers WHERE id = ? LIMIT 1",
+    [teacherId]
+  );
+
+  return rows.length > 0 ? rows[0] : null;
+}
+
 async function getOrCreateClass(className, branchId = 4) {
   if (!className) return null;
 
@@ -193,14 +209,32 @@ exports.assignTeacher = async (req, res) => {
       });
     }
 
-    const class_id = await getOrCreateClass(class_name, branch_id || 4);
+    const teacher = await getTeacherById(teacher_database_id);
+
+    if (!teacher) {
+      return res.status(404).json({
+        message: "Teacher not found"
+      });
+    }
+
+    if (isBranchScopedAdmin(req.user) && Number(teacher.branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only assign teachers in your own branch"
+      });
+    }
+
+    const effectiveBranchId = isBranchScopedAdmin(req.user)
+      ? req.user.branch_id
+      : (branch_id || teacher.branch_id || 4);
+
+    const class_id = await getOrCreateClass(class_name, effectiveBranchId);
 
     const [result] = await db.query(
       `INSERT INTO teacher_assignments
       (branch_id, teacher_id, class_id, subject, role, academic_year, status)
       VALUES (?, ?, ?, ?, ?, ?, 'active')`,
       [
-        branch_id || 4,
+        effectiveBranchId,
         teacher_database_id,
         class_id,
         subject,
@@ -226,6 +260,14 @@ exports.getTeacherStudents = async (req, res) => {
   try {
     const { teacherId } = req.params;
 
+    const requestedTeacher = await getTeacherById(teacherId);
+
+    if (!requestedTeacher) {
+      return res.status(404).json({
+        message: "Teacher not found"
+      });
+    }
+
     if (req.user && req.user.role === "teacher") {
       const ownTeacher = await getTeacherByUserId(req.user.id);
 
@@ -234,6 +276,12 @@ exports.getTeacherStudents = async (req, res) => {
           message: "You can only view students assigned to your own account"
         });
       }
+    }
+
+    if (isBranchScopedAdmin(req.user) && Number(requestedTeacher.branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only view teacher students in your own branch"
+      });
     }
 
     const [students] = await db.query(
@@ -298,6 +346,12 @@ exports.getTeacherByUserId = async (req, res) => {
       });
     }
 
+    if (isBranchScopedAdmin(req.user) && Number(rows[0].branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only view teachers in your own branch"
+      });
+    }
+
     res.json({
       message: "Teacher retrieved successfully",
       teacher: rows[0]
@@ -316,6 +370,14 @@ exports.updateTeacherProfile = async (req, res) => {
   try {
     const { teacherId } = req.params;
 
+    const requestedTeacher = await getTeacherById(teacherId);
+
+    if (!requestedTeacher) {
+      return res.status(404).json({
+        message: "Teacher profile not found"
+      });
+    }
+
     if (req.user && req.user.role === "teacher") {
       const ownTeacher = await getTeacherByUserId(req.user.id);
 
@@ -324,6 +386,12 @@ exports.updateTeacherProfile = async (req, res) => {
           message: "You can only update your own profile"
         });
       }
+    }
+
+    if (isBranchScopedAdmin(req.user) && Number(requestedTeacher.branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only update teacher profiles in your own branch"
+      });
     }
 
     const phone = req.body.phone || null;
@@ -641,7 +709,7 @@ exports.disableTeacher = async (req, res) => {
     const { id } = req.params;
 
     const [teacherRows] = await db.query(
-      "SELECT id, user_id, full_name FROM teachers WHERE id = ? LIMIT 1",
+      "SELECT id, user_id, full_name, branch_id FROM teachers WHERE id = ? LIMIT 1",
       [id]
     );
 
@@ -652,6 +720,12 @@ exports.disableTeacher = async (req, res) => {
     }
 
     const teacher = teacherRows[0];
+
+    if (isBranchScopedAdmin(req.user) && Number(teacher.branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only disable teachers in your own branch"
+      });
+    }
 
     await db.query(
       "UPDATE teachers SET status = 'disabled' WHERE id = ?",

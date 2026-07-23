@@ -1,5 +1,10 @@
 const db = require("../config/database");
 
+function isBranchScopedAdmin(user) {
+  if (!user) return false;
+  return user.role === "branch_admin" || user.role === "teacher_admin";
+}
+
 // Get announcements
 exports.getAnnouncements = async (req, res) => {
   try {
@@ -94,16 +99,32 @@ exports.deleteAnnouncement = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const [result] = await db.query(
-      "DELETE FROM announcements WHERE id = ?",
+    const [announcementRows] = await db.query(
+      "SELECT id, branch_id FROM announcements WHERE id = ? LIMIT 1",
       [id]
     );
 
-    if (result.affectedRows === 0) {
+    if (announcementRows.length === 0) {
       return res.status(404).json({
         message: "Announcement not found"
       });
     }
+
+    const announcement = announcementRows[0];
+
+    if (
+      isBranchScopedAdmin(req.user) &&
+      Number(announcement.branch_id) !== Number(req.user.branch_id)
+    ) {
+      return res.status(403).json({
+        message: "You can only delete announcements in your own branch"
+      });
+    }
+
+    const [result] = await db.query(
+      "DELETE FROM announcements WHERE id = ?",
+      [id]
+    );
 
     res.json({
       message: "Announcement deleted successfully"

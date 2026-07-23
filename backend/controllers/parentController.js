@@ -1,6 +1,11 @@
 const bcrypt = require("bcryptjs");
 const db = require("../config/database");
 
+function isBranchScopedAdmin(user) {
+  if (!user) return false;
+  return user.role === "branch_admin" || user.role === "teacher_admin";
+}
+
 async function linkParentToMatchingStudents(parentId, branchId, ghanaCardNumber, phoneNumber) {
   const cleanCard = String(ghanaCardNumber || "").trim();
   const cleanPhone = String(phoneNumber || "").trim();
@@ -1003,6 +1008,25 @@ exports.getParentChildren = async (req, res) => {
   try {
     const { id } = req.params;
 
+    const [parentRows] = await db.query(
+      "SELECT id, branch_id FROM parents WHERE id = ? LIMIT 1",
+      [id]
+    );
+
+    if (parentRows.length === 0) {
+      return res.status(404).json({
+        message: "Parent not found"
+      });
+    }
+
+    const parent = parentRows[0];
+
+    if (isBranchScopedAdmin(req.user) && Number(parent.branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only view parent children in your own branch"
+      });
+    }
+
     const [children] = await db.query(
       `SELECT
         students.id,
@@ -1319,7 +1343,7 @@ exports.toggleParentStatus = async (req, res) => {
     }
 
     const [parentRows] = await db.query(
-      "SELECT id, user_id, full_name FROM parents WHERE id = ? LIMIT 1",
+      "SELECT id, user_id, full_name, branch_id FROM parents WHERE id = ? LIMIT 1",
       [id]
     );
 
@@ -1330,6 +1354,12 @@ exports.toggleParentStatus = async (req, res) => {
     }
 
     const parent = parentRows[0];
+
+    if (isBranchScopedAdmin(req.user) && Number(parent.branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only update parent status in your own branch"
+      });
+    }
 
     await db.query(
       "UPDATE parents SET status = ? WHERE id = ?",

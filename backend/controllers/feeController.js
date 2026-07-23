@@ -1,5 +1,10 @@
 const db = require("../config/database");
 
+function isBranchScopedAdmin(user) {
+  if (!user) return false;
+  return user.role === "branch_admin" || user.role === "teacher_admin";
+}
+
 function computeFeeStatus(amountPayable, amountPaid) {
   const payable = Math.max(Number(amountPayable || 0), 0);
   const paid = Math.max(Number(amountPaid || 0), 0);
@@ -98,6 +103,23 @@ exports.createFee = async (req, res) => {
       });
     }
 
+    const [studentRows] = await db.query(
+      "SELECT id, branch_id FROM students WHERE id = ? LIMIT 1",
+      [student_id]
+    );
+
+    if (studentRows.length === 0) {
+      return res.status(404).json({
+        message: "Student not found"
+      });
+    }
+
+    if (Number(studentRows[0].branch_id) !== Number(branch_id)) {
+      return res.status(400).json({
+        message: "Selected student does not belong to the provided branch"
+      });
+    }
+
     const payable = Number(amount_payable || 0);
     const paid = Number(amount_paid || 0);
     const computed = computeFeeStatus(payable, paid);
@@ -168,6 +190,46 @@ exports.updateFee = async (req, res) => {
     const explicitStatus = normalizePaymentStatus(payment_status);
     const finalStatus = explicitStatus || computed.payment_status;
 
+    const [feeRows] = await db.query(
+      "SELECT id, branch_id FROM fees WHERE id = ? LIMIT 1",
+      [id]
+    );
+
+    if (feeRows.length === 0) {
+      return res.status(404).json({
+        message: "Fee record not found"
+      });
+    }
+
+    const fee = feeRows[0];
+
+    if (isBranchScopedAdmin(req.user) && Number(fee.branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only update fees in your own branch"
+      });
+    }
+
+    const effectiveBranchId = isBranchScopedAdmin(req.user)
+      ? req.user.branch_id
+      : branch_id;
+
+    const [studentRows] = await db.query(
+      "SELECT id, branch_id FROM students WHERE id = ? LIMIT 1",
+      [student_id]
+    );
+
+    if (studentRows.length === 0) {
+      return res.status(404).json({
+        message: "Student not found"
+      });
+    }
+
+    if (Number(studentRows[0].branch_id) !== Number(effectiveBranchId)) {
+      return res.status(400).json({
+        message: "Selected student does not belong to the provided branch"
+      });
+    }
+
     const [result] = await db.query(
       `UPDATE fees SET
         branch_id = ?,
@@ -181,7 +243,7 @@ exports.updateFee = async (req, res) => {
         payment_status = ?
       WHERE id = ?`,
       [
-        branch_id,
+        effectiveBranchId,
         student_id,
         term,
         academic_year,
@@ -215,6 +277,26 @@ exports.updateFee = async (req, res) => {
 exports.getFeePayments = async (req, res) => {
   try {
     const { fee_id } = req.params;
+
+    const [feeRows] = await db.query(
+      "SELECT id, branch_id FROM fees WHERE id = ? LIMIT 1",
+      [fee_id]
+    );
+
+    if (feeRows.length === 0) {
+      return res.status(404).json({
+        message: "Fee record not found"
+      });
+    }
+
+    if (
+      isBranchScopedAdmin(req.user) &&
+      Number(feeRows[0].branch_id) !== Number(req.user.branch_id)
+    ) {
+      return res.status(403).json({
+        message: "You can only view fee payments in your own branch"
+      });
+    }
 
     const [payments] = await db.query(
       `SELECT
@@ -286,6 +368,13 @@ exports.addFeePayment = async (req, res) => {
     }
 
     const fee = feeRows[0];
+
+    if (isBranchScopedAdmin(req.user) && Number(fee.branch_id) !== Number(req.user.branch_id)) {
+      return res.status(403).json({
+        message: "You can only add fee payments in your own branch"
+      });
+    }
+
     const amount = Number(payment_amount || 0);
 
     await db.query(
